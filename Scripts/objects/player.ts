@@ -2,8 +2,8 @@ module objects {
     // PLAYER CLASS ++++++++++++++++++++++++++++++
     export class Player extends createjs.Bitmap {
         // PRIVATE INSTANCE VARIABLES
-        private _topBounds: number;
-        private _bottomBounds: number;
+        private _rightBounds: number;
+        private _leftBounds: number;
 
         // PUBLIC INSTANCE VARIABLES
         public width: number;
@@ -19,31 +19,37 @@ module objects {
             this.regX = this.width * 0.5;
             this.regY = this.height * 0.5;
 
-            this._topBounds = this.height * 0.5;
-            this._bottomBounds = config.Screen.HEIGHT - (this.height * 0.5);
+            this._leftBounds = this.width * 0.5;
+            this._rightBounds = config.Screen.WIDTH - (this.width * 0.5);
 
-            this.y = this._bottomBounds + 20;
-            this.x = this.regX;
+            this.x = this._leftBounds + 20;
+            this.y = config.Screen.HEIGHT - this.regY;
         }
 
         // PRIVATE METHODS
         // prevent the player's avatar from going offscreen
         private _checkBounds(): void {
-            if (this.y < this._topBounds) {
-                this.y = this._topBounds;
+            if (this.x > this._rightBounds) {
+                this.x = this._rightBounds*.5;
             }
 
-            if (this.y > this._bottomBounds) {
-                this.y = this._bottomBounds;
+            if (this.x < this._leftBounds) {
+                this.x = this._leftBounds*.5;
             }
         }
 
 
         // PUBLIC METHODS
-        // move the player's avatar up or down according to the mouse's movements
+        // move the player's avatar left or right according to the mouse's movements
         public update(): void {
-            // this.y = stage.mouseY;
-            // this._checkBounds();
+            if(stage.mouseX > config.Screen.CENTER_X){
+                this.x = config.Screen.CENTER_X;
+            }
+            else{
+                this.x = stage.mouseX;
+            }
+             
+             this._checkBounds();
         }
     }
 }

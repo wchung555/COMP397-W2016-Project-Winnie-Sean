@@ -7,6 +7,7 @@
 /// <reference path="../objects/gameobject.ts" />
 /// <reference path="../objects/world.ts" />
 /// <reference path="../objects/player.ts" />
+/// <reference path="../objects/space.ts" />
 /// <reference path="../managers/collision.ts" />
 /// <reference path="../scenes/end.ts" />
 /// <reference path="../scenes/play.ts" />

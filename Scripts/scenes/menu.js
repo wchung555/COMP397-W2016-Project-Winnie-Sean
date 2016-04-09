@@ -22,20 +22,22 @@ var scenes;
             this._player = new objects.Player();
             this.addChild(this._player);
             //Add Menu Label
-            this._menuLabel = new objects.Label("Rad Randal", "60px Consolas", "#FFFFFF", config.Screen.CENTER_Y + 50, config.Screen.CENTER_X - 100, false);
+            this._menuLabel = new objects.Label("Rad Randal", "60px Consolas", "#FFFFFF", config.Screen.CENTER_X, config.Screen.CENTER_Y, false);
+            this._menuLabel.regX = this._menuLabel.getBounds().width * 0.5;
+            this._menuLabel.regY = this._menuLabel.getBounds().height * 0.5;
             this.addChild(this._menuLabel);
             // add the Instructions button to the MENU scene
-            this._instructionsButton = new objects.Button("instructionButton", config.Screen.CENTER_Y - 250, config.Screen.CENTER_X, false);
+            this._instructionsButton = new objects.Button("instructionButton", 262, 318, false);
             this.addChild(this._instructionsButton);
             // Instructions Button event listener
             // this._instructionsButton.on("click", this._instructionsButtonClick, this);
             // add the Start button to the MENU scene
-            this._startButton = new objects.Button("playButton", config.Screen.CENTER_Y, config.Screen.CENTER_X, false);
+            this._startButton = new objects.Button("playButton", 360, 258, false);
             this.addChild(this._startButton);
             // Start Button event listener
-            // this._startButton.on("click", this._startButtonClick, this);      
+            this._startButton.on("click", this._startButtonClick, this);
             // add the Exit button to the MENU scene
-            this._exitButton = new objects.Button("quitButton", config.Screen.CENTER_Y + 100, config.Screen.CENTER_X, false);
+            this._exitButton = new objects.Button("quitButton", 259, 258, false);
             this.addChild(this._exitButton);
             // Exit Button event listener
             // this._exitButton.on("click", this._exitButtonClick, this);          
