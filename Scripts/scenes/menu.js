@@ -30,7 +30,7 @@ var scenes;
             this._instructionsButton = new objects.Button("instructionButton", 262, 318, false);
             this.addChild(this._instructionsButton);
             // Instructions Button event listener
-            // this._instructionsButton.on("click", this._instructionsButtonClick, this);
+            this._instructionsButton.on("click", this._instructionsButtonClick, this);
             // add the Start button to the MENU scene
             this._startButton = new objects.Button("playButton", 360, 258, false);
             this.addChild(this._startButton);
@@ -40,7 +40,7 @@ var scenes;
             this._exitButton = new objects.Button("quitButton", 259, 258, false);
             this.addChild(this._exitButton);
             // Exit Button event listener
-            // this._exitButton.on("click", this._exitButtonClick, this);          
+            this._exitButton.on("click", this._exitButtonClick, this);
             // add this scene to the global stage container
             stage.addChild(this);
         };
@@ -58,7 +58,7 @@ var scenes;
         // START Button click event handler
         Menu.prototype._startButtonClick = function (event) {
             // Switch to the PLAY Scene
-            scene = config.Scene.PLAY;
+            scene = config.Scene.LEVEL1;
             changeScene();
         };
         // EXIT Button click event handler

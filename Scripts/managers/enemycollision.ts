@@ -1,10 +1,10 @@
 module managers {
-    // COLLISION MANAGER CLASS
-    export class Collision {
+    // ENEMY COLLISION MANAGER CLASS
+    export class EnemyCollision {
         // PRIVATE INSTANCE VARIABLES
-        private _player: objects.Player;
-        constructor(player:objects.Player) {
-            this._player = player;
+        private _enemy: objects.GameObject;
+        constructor(enemy:objects.GameObject) {
+            this._enemy = enemy;
         }
         
         // find the distance between two points
@@ -16,13 +16,13 @@ module managers {
         public check(object:objects.GameObject):boolean {
             var startPoint:createjs.Point = new createjs.Point();
             var endPoint:createjs.Point = new createjs.Point();
-            var playerHalfHeight:number = this._player.height * 0.5;
+            var playerHalfHeight:number = this._enemy.height * 0.5;
             var objectHalfHeight:number = object.height * 0.5;
             var minimumDistance:number = playerHalfHeight + objectHalfHeight;
             var isCollision = false;
             
-            startPoint.x = this._player.x;
-            startPoint.y = this._player.y;
+            startPoint.x = this._enemy.x;
+            startPoint.y = this._enemy.y;
             
             endPoint.x = object.centerX + object.x;
             endPoint.y = object.centerY + object.y;
@@ -33,7 +33,7 @@ module managers {
             if(this.distance(startPoint, endPoint) < minimumDistance) {
                 // check if it's an enemy hit
                 if(object.name === "batwing") {
-                    console.log("enemy hit!");
+                    console.log("inter-enemy collision detected");
                     //createjs.Sound.play("stabSound");
                 }
                 

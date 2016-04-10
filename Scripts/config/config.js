@@ -6,8 +6,11 @@ var config;
         }
         Scene.MENU = 0;
         Scene.INSTRUCTIONS = 1;
-        Scene.PLAY = 2;
-        Scene.END = 3;
+        Scene.LEVEL1 = 2;
+        Scene.LEVEL2 = 3;
+        Scene.LEVEL3 = 4;
+        Scene.WIN = 5;
+        Scene.END = 6;
         return Scene;
     })();
     config.Scene = Scene;

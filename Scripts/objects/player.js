@@ -24,10 +24,10 @@ var objects;
         // prevent the player's avatar from going offscreen
         Player.prototype._checkBounds = function () {
             if (this.x > this._rightBounds) {
-                this.x = this._rightBounds * .5;
+                this.x = this._rightBounds;
             }
             if (this.x < this._leftBounds) {
-                this.x = this._leftBounds * .5;
+                this.x = this._leftBounds;
             }
         };
         // PUBLIC METHODS

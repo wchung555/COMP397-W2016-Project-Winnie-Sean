@@ -10,13 +10,14 @@ var score;
 // Game Scenes
 var menu;
 var instructions;
-var play;
+var level1;
 var end;
 var assetData = [
     // Add your Assets here
     { id: "battery", src: "../../Assets/images/battery.png" },
     { id: "EnemyBatman", src: "../../Assets/images/EnemyBatman.png" },
     { id: "EnemyCat", src: "../../Assets/images/EnemyCat.png" },
+    // { id: "batwing", src: "../../Assets/images/batwing.png" },
     { id: "instructionButton", src: "../../Assets/images/instructionButton.png" },
     { id: "Platform200", src: "../../Assets/images/Platform200.png" },
     { id: "Platform400", src: "../../Assets/images/Platform400.png" },
@@ -93,12 +94,12 @@ function changeScene() {
             currentScene = instructions;
             console.log("Starting INSTRUCTIONS Scene");
             break;
-        case config.Scene.PLAY:
+        case config.Scene.LEVEL1:
             // show the PLAY scene
             stage.removeAllChildren();
-            play = new scenes.Play();
-            currentScene = play;
-            console.log("Starting PLAY Scene");
+            level1 = new scenes.Level1();
+            currentScene = level1;
+            console.log("Starting LEVEL 1 Scene");
             break;
         case config.Scene.END:
             // show the END scene

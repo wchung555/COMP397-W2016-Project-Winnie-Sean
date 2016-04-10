@@ -30,11 +30,11 @@ module objects {
         // prevent the player's avatar from going offscreen
         private _checkBounds(): void {
             if (this.x > this._rightBounds) {
-                this.x = this._rightBounds*.5;
+                this.x = this._rightBounds;
             }
 
             if (this.x < this._leftBounds) {
-                this.x = this._leftBounds*.5;
+                this.x = this._leftBounds;
             }
         }
 

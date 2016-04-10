@@ -33,7 +33,7 @@ var scenes;
         // START Button click event handler
         Instructions.prototype._startButtonClick = function (event) {
             // Switch to the PLAY Scene
-            scene = config.Scene.PLAY;
+            scene = config.Scene.LEVEL1;
             changeScene();
         };
         return Instructions;
