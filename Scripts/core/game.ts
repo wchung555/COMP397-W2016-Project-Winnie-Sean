@@ -22,7 +22,7 @@ var assetData: objects.Asset[] = [
     { id: "battery", src: "../../Assets/images/battery.png" },
     { id: "EnemyBatman", src: "../../Assets/images/EnemyBatman.png" },
     { id: "EnemyCat", src: "../../Assets/images/EnemyCat.png" },
-    // { id: "batwing", src: "../../Assets/images/batwing.png" },
+    { id: "batarang", src: "../../Assets/images/batarang.png" },
     { id: "instructionButton", src: "../../Assets/images/instructionButton.png" },
     { id: "Platform200", src: "../../Assets/images/Platform200.png" },
     { id: "Platform400", src: "../../Assets/images/Platform400.png" },

@@ -33,7 +33,8 @@ var objects;
             this.x -= this._speed.x;
         };
         return World;
-    })(objects.GameObject);
+    }(objects.GameObject));
     objects.World = World;
 })(objects || (objects = {}));
+
 //# sourceMappingURL=world.js.map

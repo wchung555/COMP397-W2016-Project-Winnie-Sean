@@ -42,7 +42,8 @@ var objects;
             this._checkBounds();
         };
         return Player;
-    })(createjs.Bitmap);
+    }(createjs.Bitmap));
     objects.Player = Player;
 })(objects || (objects = {}));
+
 //# sourceMappingURL=player.js.map

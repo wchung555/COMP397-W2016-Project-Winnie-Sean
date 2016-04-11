@@ -3,7 +3,7 @@ module scenes {
     export class Level1 extends objects.Scene {
         //PRIVATE INSTANCE VARIABLES ++++++++++++
         private _world: objects.World;
-        private _batwings: objects.Batwing[];
+        private _batwings: objects.Batarang[];
         private _batwingCount: number;
         private _player: objects.Player;
         private _collision: managers.Collision;
@@ -32,7 +32,7 @@ module scenes {
             this._batwingCount = 5;
 
             // Instantiate Enemy array
-            this._batwings = new Array<objects.Batwing>(this._batwingCount);
+            this._batwings = new Array<objects.Batarang>(this._batwingCount);
             this._enemyCollision = new Array<managers.EnemyCollision>(this._batwingCount);
 
             // add world to the scene
@@ -45,7 +45,7 @@ module scenes {
 
             //add enemies to the scene
             for (var i: number = 0; i < this._batwingCount; i++) {
-                this._batwings[i] = new objects.Batwing();
+                this._batwings[i] = new objects.Batarang();
                 this.addChild(this._batwings[i]);
                 this._enemyCollision[i] = new managers.EnemyCollision(this._batwings[i]);
             }

@@ -32,7 +32,7 @@ var scenes;
             this.addChild(this._player);
             //add enemies to the scene
             for (var i = 0; i < this._batwingCount; i++) {
-                this._batwings[i] = new objects.Batwing();
+                this._batwings[i] = new objects.Batarang();
                 this.addChild(this._batwings[i]);
                 this._enemyCollision[i] = new managers.EnemyCollision(this._batwings[i]);
             }
@@ -70,14 +70,17 @@ var scenes;
                 this._batwings[i].isColliding = false;
             }
             if (this._lives <= 0) {
+                console.log("player ran out of lives");
                 scene = config.Scene.END;
                 changeScene();
             }
             else if (score >= 1000) {
+                console.log("transfer to level 2");
             }
         };
         return Level1;
-    })(objects.Scene);
+    }(objects.Scene));
     scenes.Level1 = Level1;
 })(scenes || (scenes = {}));
+
 //# sourceMappingURL=level1.js.map
