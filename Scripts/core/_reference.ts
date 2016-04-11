@@ -11,7 +11,7 @@
 /// <reference path="../objects/world.ts" />
 /// <reference path="../objects/player.ts" />
 /// <reference path="../objects/space.ts" />
-/// <reference path="../objects/batwing.ts" />
+
 /// <reference path="../objects/batarang.ts" />
 
 /// <reference path="../managers/collision.ts" />

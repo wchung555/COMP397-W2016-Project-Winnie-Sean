@@ -20,10 +20,10 @@ var scenes;
             // Set lives = 9
             this._lives = 5;
             // Set Enemy Count
-            this._batwingCount = 5;
+            this._batarangCount = 5;
             // Instantiate Enemy array
-            this._batwings = new Array(this._batwingCount);
-            this._enemyCollision = new Array(this._batwingCount);
+            this._batarangs = new Array(this._batarangCount);
+            this._enemyCollision = new Array(this._batarangCount);
             // add world to the scene
             this._world = new objects.World();
             this.addChild(this._world);
@@ -31,10 +31,10 @@ var scenes;
             this._player = new objects.Player();
             this.addChild(this._player);
             //add enemies to the scene
-            for (var i = 0; i < this._batwingCount; i++) {
-                this._batwings[i] = new objects.Batarang();
-                this.addChild(this._batwings[i]);
-                this._enemyCollision[i] = new managers.EnemyCollision(this._batwings[i]);
+            for (var i = 0; i < this._batarangCount; i++) {
+                this._batarangs[i] = new objects.Batarang();
+                this.addChild(this._batarangs[i]);
+                this._enemyCollision[i] = new managers.EnemyCollision(this._batarangs[i]);
             }
             // add labels to scene
             this._scoreLabel = new objects.Label("Score: " + score + " m", "35px Consolas", "#FFFFFF", 50, 50, false);
@@ -53,21 +53,21 @@ var scenes;
             score++;
             this._scoreLabel.text = "Score: " + score + " m";
             // check for collisions
-            for (var i = 0; i < this._batwingCount; i++) {
-                if (this._collision.check(this._batwings[i])) {
-                    this._batwings[i].isColliding = true;
+            for (var i = 0; i < this._batarangCount; i++) {
+                if (this._collision.check(this._batarangs[i])) {
+                    this._batarangs[i].isColliding = true;
                     this._lives--;
                     this._livesLabel.text = "Lives: " + this._lives;
                 }
                 else {
-                    for (var j = 0; j < this._batwingCount; j++) {
-                        if (j != i && this._enemyCollision[j].check(this._batwings[i])) {
-                            this._batwings[i].isColliding = true;
+                    for (var j = 0; j < this._batarangCount; j++) {
+                        if (j != i && this._enemyCollision[j].check(this._batarangs[i])) {
+                            this._batarangs[i].isColliding = true;
                         }
                     }
                 }
-                this._batwings[i].update();
-                this._batwings[i].isColliding = false;
+                this._batarangs[i].update();
+                this._batarangs[i].isColliding = false;
             }
             if (this._lives <= 0) {
                 console.log("player ran out of lives");

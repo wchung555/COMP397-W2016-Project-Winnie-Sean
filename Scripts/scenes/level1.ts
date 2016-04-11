@@ -3,8 +3,8 @@ module scenes {
     export class Level1 extends objects.Scene {
         //PRIVATE INSTANCE VARIABLES ++++++++++++
         private _world: objects.World;
-        private _batwings: objects.Batarang[];
-        private _batwingCount: number;
+        private _batarangs: objects.Batarang[];
+        private _batarangCount: number;
         private _player: objects.Player;
         private _collision: managers.Collision;
         private _enemyCollision: managers.EnemyCollision[];
@@ -29,11 +29,11 @@ module scenes {
             this._lives = 5;
 
             // Set Enemy Count
-            this._batwingCount = 5;
+            this._batarangCount = 5;
 
             // Instantiate Enemy array
-            this._batwings = new Array<objects.Batarang>(this._batwingCount);
-            this._enemyCollision = new Array<managers.EnemyCollision>(this._batwingCount);
+            this._batarangs = new Array<objects.Batarang>(this._batarangCount);
+            this._enemyCollision = new Array<managers.EnemyCollision>(this._batarangCount);
 
             // add world to the scene
             this._world = new objects.World();
@@ -44,10 +44,10 @@ module scenes {
             this.addChild(this._player);
 
             //add enemies to the scene
-            for (var i: number = 0; i < this._batwingCount; i++) {
-                this._batwings[i] = new objects.Batarang();
-                this.addChild(this._batwings[i]);
-                this._enemyCollision[i] = new managers.EnemyCollision(this._batwings[i]);
+            for (var i: number = 0; i < this._batarangCount; i++) {
+                this._batarangs[i] = new objects.Batarang();
+                this.addChild(this._batarangs[i]);
+                this._enemyCollision[i] = new managers.EnemyCollision(this._batarangs[i]);
             }
 
             // add labels to scene
@@ -83,20 +83,20 @@ module scenes {
             this._scoreLabel.text = "Score: " + score + " m";
 
             // check for collisions
-            for (var i = 0; i < this._batwingCount; i++) {
-                if (this._collision.check(this._batwings[i])) {
-                    this._batwings[i].isColliding = true;
+            for (var i = 0; i < this._batarangCount; i++) {
+                if (this._collision.check(this._batarangs[i])) {
+                    this._batarangs[i].isColliding = true;
                     this._lives--;
                     this._livesLabel.text = "Lives: " + this._lives;
                 } else {
-                    for (var j = 0; j < this._batwingCount; j++) {
-                        if (j != i && this._enemyCollision[j].check(this._batwings[i])) {
-                            this._batwings[i].isColliding = true;
+                    for (var j = 0; j < this._batarangCount; j++) {
+                        if (j != i && this._enemyCollision[j].check(this._batarangs[i])) {
+                            this._batarangs[i].isColliding = true;
                         }
                     }
                 }
-                this._batwings[i].update();
-                this._batwings[i].isColliding = false;
+                this._batarangs[i].update();
+                this._batarangs[i].isColliding = false;
             }
 
             if (this._lives <= 0) {
