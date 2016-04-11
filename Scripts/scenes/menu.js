@@ -16,8 +16,12 @@ var scenes;
         // Start Method
         Menu.prototype.start = function () {
             //Add Menu Background
-            this._menuBackground = new objects.World();
-            this.addChild(this._menuBackground);
+            this._menuBackground1 = new objects.World();
+            this.addChild(this._menuBackground1);
+            //add secondary for smooth scroll
+            this._menuBackground2 = new objects.World();
+            this._menuBackground2.setSecondary();
+            this.addChild(this._menuBackground2);
             //Add Player
             this._player = new objects.Player();
             this.addChild(this._player);
@@ -46,7 +50,8 @@ var scenes;
         };
         // INTRO Scene updates here
         Menu.prototype.update = function () {
-            this._menuBackground.update();
+            this._menuBackground1.update();
+            this._menuBackground2.update();
         };
         //EVENT HANDLERS ++++++++++++++++++++
         // INSTRUCTIONS Button click event handler

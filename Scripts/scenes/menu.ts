@@ -3,7 +3,8 @@ module scenes {
     export class Menu extends objects.Scene {
         //PRIVATE INSTANCE VARIABLES ++++++++++++
         private _menuLabel: objects.Label;
-        private _menuBackground: objects.World;
+        private _menuBackground1: objects.World;
+        private _menuBackground2: objects.World;
         private _player: objects.Player;
         private _instructionsButton: objects.Button;
         private _startButton: objects.Button;
@@ -19,8 +20,12 @@ module scenes {
         // Start Method
         public start(): void {
             //Add Menu Background
-            this._menuBackground = new objects.World();
-            this.addChild(this._menuBackground);
+            this._menuBackground1 = new objects.World();
+            this.addChild(this._menuBackground1);
+                //add secondary for smooth scroll
+            this._menuBackground2 = new objects.World();
+            this._menuBackground2.setSecondary();
+            this.addChild(this._menuBackground2);
 
             //Add Player
             this._player = new objects.Player();
@@ -69,7 +74,8 @@ module scenes {
 
         // INTRO Scene updates here
         public update(): void {
-            this._menuBackground.update();
+            this._menuBackground1.update();
+            this._menuBackground2.update();
         }
 
 

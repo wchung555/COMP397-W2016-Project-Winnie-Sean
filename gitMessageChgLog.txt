@@ -1,3 +1,6 @@
-Tweak assets and minor changes:
-- Changed enemy from cat to batarang.
-- Added Batarang class to replace Batwing class; virtually no changes. Kept batwing object file for this commit; removed from reference path.
+Implemented new method of scrolling the game world:
+- Changed objects.World to have a programmable setting to add a second instance of background for modified scroll method.
+- Updated menu and Level 1 scenes to use new setting in objects.World.
+			**Known Issue** seems to be a 2-3 pixel gap between first and second instance of world background objects.
+			Attempted patch: Subtract 5 from new reset position to create overlap. Made no difference.
+- Shifted player object down to ground level.

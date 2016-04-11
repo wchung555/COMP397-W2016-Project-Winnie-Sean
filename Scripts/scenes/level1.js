@@ -25,8 +25,12 @@ var scenes;
             this._batarangs = new Array(this._batarangCount);
             this._enemyCollision = new Array(this._batarangCount);
             // add world to the scene
-            this._world = new objects.World();
-            this.addChild(this._world);
+            this._background1 = new objects.World();
+            this.addChild(this._background1);
+            //add secondary for smooth scroll
+            this._background2 = new objects.World();
+            this._background2.setSecondary();
+            this.addChild(this._background2);
             // add player to the scene
             this._player = new objects.Player();
             this.addChild(this._player);
@@ -48,7 +52,8 @@ var scenes;
         };
         // PLAY Scene updates here
         Level1.prototype.update = function () {
-            this._world.update();
+            this._background1.update();
+            this._background2.update();
             this._player.update();
             score++;
             this._scoreLabel.text = "Score: " + score + " m";

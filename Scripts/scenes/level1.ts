@@ -2,7 +2,8 @@
 module scenes {
     export class Level1 extends objects.Scene {
         //PRIVATE INSTANCE VARIABLES ++++++++++++
-        private _world: objects.World;
+        private _background1: objects.World;
+        private _background2: objects.World;
         private _batarangs: objects.Batarang[];
         private _batarangCount: number;
         private _player: objects.Player;
@@ -36,8 +37,12 @@ module scenes {
             this._enemyCollision = new Array<managers.EnemyCollision>(this._batarangCount);
 
             // add world to the scene
-            this._world = new objects.World();
-            this.addChild(this._world);
+            this._background1 = new objects.World();
+            this.addChild(this._background1);
+                    //add secondary for smooth scroll
+            this._background2 = new objects.World();
+            this._background2.setSecondary();
+            this.addChild(this._background2);
 
             // add player to the scene
             this._player = new objects.Player();
@@ -75,7 +80,8 @@ module scenes {
 
         // PLAY Scene updates here
         public update(): void {
-            this._world.update();
+            this._background1.update();
+            this._background2.update();
 
             this._player.update();
 

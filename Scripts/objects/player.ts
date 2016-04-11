@@ -17,7 +17,7 @@ module objects {
             this.height = this.getBounds().height;
 
             this.regX = this.width * 0.5;
-            this.regY = this.height * 0.5;
+            this.regY = (this.height * 0.5) - 3;
 
             this._leftBounds = this.width * 0.5;
             this._rightBounds = config.Screen.WIDTH - (this.width * 0.5);
