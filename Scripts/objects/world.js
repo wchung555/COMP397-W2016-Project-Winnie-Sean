@@ -44,6 +44,7 @@ var objects;
         // PRIVATE INSTANCE VARIABLES +++++++++++++++++
         World.resetVal = 0;
         World.boundVal = config.Screen.WIDTH;
+        World.floor = 428;
         return World;
     }(objects.GameObject));
     objects.World = World;

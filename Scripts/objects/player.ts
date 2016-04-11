@@ -23,7 +23,7 @@ module objects {
             this._rightBounds = config.Screen.WIDTH - (this.width * 0.5);
 
             this.x = this._leftBounds + 20;
-            this.y = config.Screen.HEIGHT - this.regY;
+            this.y = World.floor - this.regY; //config.Screen.HEIGHT - this.regY;
         }
 
         // PRIVATE METHODS

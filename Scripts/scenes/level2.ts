@@ -1,14 +1,24 @@
 // LEVEL 1 SCENE
 module scenes {
-    export class Level1 extends objects.Scene {
+    export class Level2 extends objects.Scene {
         //PRIVATE INSTANCE VARIABLES ++++++++++++
+        //Scene- - - - - - - - - - - - - - - 
         private _background1: objects.World;
         private _background2: objects.World;
+        
+        //non-Player- - - - - - - - - - - - - - -
         private _batarangs: objects.Batarang[];
         private _batarangCount: number;
+        
+        private _spikes: objects.Spikes[];
+        private _spikeCount: number;
+        
+        //plater- - - - - - - - - - - - - - - - - -
         private _player: objects.Player;
+        //other- -- - - - - - - - - - - - - - - - 
         private _collision: managers.Collision;
         private _enemyCollision: managers.EnemyCollision[];
+        private _spikeCollision: managers.EnemyCollision[];
         private _scoreLabel: objects.Label;
         private _lives: number;
         private _livesLabel: objects.Label;
@@ -31,11 +41,14 @@ module scenes {
 
             // Set Enemy Count
             this._batarangCount = 5;
+            this._spikeCount = 3;
 
             // Instantiate Enemy array
             this._batarangs = new Array<objects.Batarang>(this._batarangCount);
             this._enemyCollision = new Array<managers.EnemyCollision>(this._batarangCount);
 
+            this._spikes = new Array<objects.Spikes>(this._spikeCount);
+            
             // add world to the scene
             this._background1 = new objects.World();
             this.addChild(this._background1);
@@ -53,6 +66,12 @@ module scenes {
                 this._batarangs[i] = new objects.Batarang();
                 this.addChild(this._batarangs[i]);
                 this._enemyCollision[i] = new managers.EnemyCollision(this._batarangs[i]);
+            }
+            
+            for (var i: number = 0; i < this._spikeCount; i++) {
+                this._spikes[i] = new objects.Spikes();
+                this.addChild(this._spikes[i]);
+                this._enemyCollision[i] = new managers.EnemyCollision(this._spikes[i]);
             }
 
             // add labels to scene
@@ -89,31 +108,52 @@ module scenes {
             this._scoreLabel.text = "Score: " + score + " m";
 
             // check for collisions
+            //batarangs
             for (var i = 0; i < this._batarangCount; i++) {
                 if (this._collision.check(this._batarangs[i])) {
                     this._batarangs[i].isColliding = true;
-                    //this._batarangs[i].bounceX();           //bounce away
+                    
                     this._lives--;
                     this._livesLabel.text = "Lives: " + this._lives;
                 } else {
                     for (var j = 0; j < this._batarangCount; j++) {
                         if (j != i && this._enemyCollision[j].check(this._batarangs[i])) {
                             this._batarangs[i].isColliding = true;
+                            this._batarangs[i].bounceX(); //bounce
                         }
                     }
                 }
                 this._batarangs[i].update();
                 this._batarangs[i].isColliding = false;
-            }
+            }//for batarangs
+            
+            //spikes
+            for (var i = 0; i < this._spikeCount; i++) {
+                if (this._collision.check(this._spikes[i])) {
+                    this._spikes[i].isColliding = true;
+                    
+                    this._lives--;
+                    this._livesLabel.text = "Lives: " + this._lives;
+                } else {
+                    for (var j = 0; j < this._spikeCount; j++) {
+                        if (j != i && this._enemyCollision[j].check(this._batarangs[i])) {
+                            this._spikes[i].isColliding = true;
+                            //this._spikes[i].bounceX(); //bounce
+                        }
+                    }
+                }
+                this._spikes[i].update();
+                this._spikes[i].isColliding = false;
+            }//for spikes
 
             if (this._lives <= 0) {
                 console.log("player ran out of lives");
-                scene = config.Scene.LEVEL2; //testing
+                scene = config.Scene.END;
                 changeScene();
             } else if (score >= 1000) {
-                console.log("transfer to level 2");
-                 scene = config.Scene.LEVEL2;
-                 changeScene();
+                console.log("transfer to level 3");
+                // scene = config.Scene.LEVEL2;
+                // changeScene();
             }
         }
 

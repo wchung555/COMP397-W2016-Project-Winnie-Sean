@@ -4,6 +4,7 @@ module objects {
         // PRIVATE INSTANCE VARIABLES +++++++++++++++++
         static resetVal: number = 0;
         static boundVal: number = config.Screen.WIDTH;
+        static floor: number = 428;
         // CONSTRUCTOR METHOD +++++++++++++++++++++++++
         constructor() {
             super("WorldPlatform");

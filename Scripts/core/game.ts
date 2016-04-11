@@ -15,6 +15,7 @@ var score:number;
 var menu: scenes.Menu;
 var instructions: scenes.Instructions;
 var level1: scenes.Level1;
+var level2: scenes.Level2;
 var end: scenes.End;
 
 var assetData: objects.Asset[] = [
@@ -23,6 +24,7 @@ var assetData: objects.Asset[] = [
     { id: "EnemyBatman", src: "../../Assets/images/EnemyBatman.png" },
     { id: "EnemyCat", src: "../../Assets/images/EnemyCat.png" },
     { id: "batarang", src: "../../Assets/images/batarang.png" },
+    { id: "spikes", src: "../../Assets/images/spikes.png" },
     { id: "instructionButton", src: "../../Assets/images/instructionButton.png" },
     { id: "Platform200", src: "../../Assets/images/Platform200.png" },
     { id: "Platform400", src: "../../Assets/images/Platform400.png" },
@@ -121,6 +123,13 @@ function changeScene(): void {
             level1 = new scenes.Level1();
             currentScene = level1;
             console.log("Starting LEVEL 1 Scene");
+            break;
+        case config.Scene.LEVEL2:
+            // show the PLAY scene
+            stage.removeAllChildren();
+            level2 = new scenes.Level2();
+            currentScene = level2;
+            console.log("Starting LEVEL 2 Scene");
             break;
         case config.Scene.END:
             // show the END scene

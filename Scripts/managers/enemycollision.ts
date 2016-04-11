@@ -31,10 +31,15 @@ module managers {
             /* check if the distance between the player and 
               the other object is less than the minimum distance */
             if(this.distance(startPoint, endPoint) < minimumDistance) {
+                //var message: string = "";
                 // check if it's an enemy hit
-                if(object.name === "batwing") {
+                if(object.name === "batarang") {
+                    //message = "batarang";
                     console.log("inter-enemy collision detected");
+                    
                     //createjs.Sound.play("stabSound");
+                    
+                    /*** TO-DO ****** Add code for checking if objects travel in opposite directions * * * * * * * * */
                 }
                 
                 isCollision = true;

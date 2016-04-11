@@ -41,7 +41,14 @@ module objects {
                 this._checkBounds(this._leftBounds);
                 this.y += this._speed.y;
                 this.x -= this._speed.x;
-            }
-        }
-    }
-}
+            }//else
+        }//update()
+        
+        
+        //reverse the horizontal motion of object (bounce)
+        public bounceX(): void {
+            this._speed.x = -this._speed.x;
+        }//bounceX
+        
+    }//class
+}//module

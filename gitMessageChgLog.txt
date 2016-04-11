@@ -1,6 +1,12 @@
-Implemented new method of scrolling the game world:
-- Changed objects.World to have a programmable setting to add a second instance of background for modified scroll method.
-- Updated menu and Level 1 scenes to use new setting in objects.World.
-			**Known Issue** seems to be a 2-3 pixel gap between first and second instance of world background objects.
-			Attempted patch: Subtract 5 from new reset position to create overlap. Made no difference.
-- Shifted player object down to ground level.
+Implemented new level & Bug fixes:
+- Set play button to go straight to level 2 for testing.
+- Began fix on inter-batarang collision detection. 
+		- Created bounceX function.Buggy. Undiagnosed.
+		Note: This is unnecessary as probability of collision in real-world scenario is extremely low.
+		**KNOWN ERROR** Batarangs disappear on collision. After undoing all my changes for collisions, problem persists. Undiagnosed.
+- Created level 2 file/class	
+		-added code for generating spikes.
+- Created spikes file/class
+		**KNOWN ERRORS**
+		>Spikes not scrolling.
+		> Being created at y=0 instead of y= (World.floor - regY)

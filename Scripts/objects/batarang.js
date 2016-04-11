@@ -39,11 +39,15 @@ var objects;
                 this._checkBounds(this._leftBounds);
                 this.y += this._speed.y;
                 this.x -= this._speed.x;
-            }
-        };
+            } //else
+        }; //update()
+        //reverse the horizontal motion of object (bounce)
+        Batarang.prototype.bounceX = function () {
+            this._speed.x = -this._speed.x;
+        }; //bounceX
         return Batarang;
     }(objects.GameObject));
-    objects.Batarang = Batarang;
-})(objects || (objects = {}));
+    objects.Batarang = Batarang; //class
+})(objects || (objects = {})); //module
 
 //# sourceMappingURL=batarang.js.map
