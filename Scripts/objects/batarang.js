@@ -13,7 +13,8 @@ var objects;
             _super.call(this, "batarang");
             this._reset(this._rightBounds);
             this.name = "batarang";
-            this.isColliding = false;
+            this.isHittingBat = false;
+            this.isHittingPlayer = false;
         }
         // PRIVATE METHODS +++++++++++++++++++++++++++++
         // check to see if the left of the enemy is outside the viewport
@@ -28,23 +29,27 @@ var objects;
             this._speed.x = Math.floor(Math.random() * 10) - 5; // between -5 and 5
             this.x = Math.floor(Math.random() * this._rightBounds) + this._leftBounds;
             this.y = value;
-        };
+        }; //_reset()
+        //reverse the horizontal motion of object (bounce)
+        Batarang.prototype.bounceX = function () {
+            this._speed.x = -this._speed.x;
+            console.log("Bounced");
+        }; //bounceX
         // PUBLIC METHODS ++++++++++++++++++++++++++++++
         // scroll the enemy across the screen
         Batarang.prototype.update = function () {
-            if (this.isColliding) {
+            if (this.isHittingPlayer) {
                 this._reset(this._topBounds);
             }
             else {
+                if (this.isHittingBat) {
+                    this.bounceX();
+                }
                 this._checkBounds(this._leftBounds);
                 this.y += this._speed.y;
                 this.x -= this._speed.x;
             } //else
         }; //update()
-        //reverse the horizontal motion of object (bounce)
-        Batarang.prototype.bounceX = function () {
-            this._speed.x = -this._speed.x;
-        }; //bounceX
         return Batarang;
     }(objects.GameObject));
     objects.Batarang = Batarang; //class

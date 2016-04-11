@@ -15,7 +15,9 @@ var objects;
             //this._rightBounds += this._rightBounds + (Spikes.numSpikes * this.width)
             this._reset();
             this.name = "spikes";
-            this.y = objects.World.floor = this.regY;
+            this.y = objects.World.floor - this.height + 3;
+            this._speed.x = 5;
+            this._rightBounds = config.Screen.WIDTH;
             this.isColliding = false;
         }
         // PRIVATE METHODS +++++++++++++++++++++++++++++

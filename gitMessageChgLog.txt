@@ -1,12 +1,11 @@
-Implemented new level & Bug fixes:
-- Set play button to go straight to level 2 for testing.
-- Began fix on inter-batarang collision detection. 
-		- Created bounceX function.Buggy. Undiagnosed.
-		Note: This is unnecessary as probability of collision in real-world scenario is extremely low.
-		**KNOWN ERROR** Batarangs disappear on collision. After undoing all my changes for collisions, problem persists. Undiagnosed.
-- Created level 2 file/class	
-		-added code for generating spikes.
-- Created spikes file/class
-		**KNOWN ERRORS**
-		>Spikes not scrolling.
-		> Being created at y=0 instead of y= (World.floor - regY)
+Completed functionality on spikes, bug fixes, enhancements:  
+- Fixed spike  
+  - Stopped rendering at top of screen. Renders correctly at the world floor.
+  - Corrected left to right motion.
+  - Fixed issue where spikes rendered in the game scene instead of outside.
+  **Known Issues** 
+  - [ ] Spikes still seem slightly predictable. Minor. Fix later.
+
+- Fixed Batarang collisions.
+- Changed `_lives` from level-scope to game scope. Renamed to `lives`.  
+  Allows for lives to carry over to the next screen. The better a player does in the level before, the better their chances of success are in the later levels.  

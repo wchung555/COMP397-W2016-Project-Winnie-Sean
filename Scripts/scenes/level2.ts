@@ -20,7 +20,7 @@ module scenes {
         private _enemyCollision: managers.EnemyCollision[];
         private _spikeCollision: managers.EnemyCollision[];
         private _scoreLabel: objects.Label;
-        private _lives: number;
+        //private _lives: number;
         private _livesLabel: objects.Label;
 
         // CONSTRUCTOR ++++++++++++++++++++++
@@ -36,8 +36,8 @@ module scenes {
             // Set starting score
             score = 0;
 
-            // Set lives = 9
-            this._lives = 5;
+            // add level lives
+            lives += 5;
 
             // Set Enemy Count
             this._batarangCount = 5;
@@ -48,6 +48,7 @@ module scenes {
             this._enemyCollision = new Array<managers.EnemyCollision>(this._batarangCount);
 
             this._spikes = new Array<objects.Spikes>(this._spikeCount);
+            this._spikeCollision = new Array<managers.EnemyCollision>(this._spikeCount);
             
             // add world to the scene
             this._background1 = new objects.World();
@@ -71,7 +72,7 @@ module scenes {
             for (var i: number = 0; i < this._spikeCount; i++) {
                 this._spikes[i] = new objects.Spikes();
                 this.addChild(this._spikes[i]);
-                this._enemyCollision[i] = new managers.EnemyCollision(this._spikes[i]);
+                this._spikeCollision[i] = new managers.EnemyCollision(this._spikes[i]);
             }
 
             // add labels to scene
@@ -82,7 +83,7 @@ module scenes {
                 50,
                 false);
             this.addChild(this._scoreLabel);
-            this._livesLabel = new objects.Label("Lives: " + this._lives,
+            this._livesLabel = new objects.Label("Lives: " + lives,
                 "35px Consolas",
                 "#FFFFFF",
                 config.Screen.WIDTH - 200,
@@ -109,31 +110,33 @@ module scenes {
 
             // check for collisions
             //batarangs
-            for (var i = 0; i < this._batarangCount; i++) {
-                if (this._collision.check(this._batarangs[i])) {
-                    this._batarangs[i].isColliding = true;
-                    
-                    this._lives--;
-                    this._livesLabel.text = "Lives: " + this._lives;
+            for (var i = 0; i < this._batarangCount; i++) { //check all
+                if (this._collision.check(this._batarangs[i])) { //colliding with player avatar
+                    this._batarangs[i].isHittingPlayer = true;
+                    lives--;
+                    this._livesLabel.text = "Lives: " + lives;
                 } else {
                     for (var j = 0; j < this._batarangCount; j++) {
                         if (j != i && this._enemyCollision[j].check(this._batarangs[i])) {
-                            this._batarangs[i].isColliding = true;
-                            this._batarangs[i].bounceX(); //bounce
+                            this._batarangs[i].isHittingBat = true;
+                            console.log("Bat on Bat collision: ");
                         }
                     }
                 }
                 this._batarangs[i].update();
-                this._batarangs[i].isColliding = false;
+                this._batarangs[i].isHittingBat = false;
+                this._batarangs[i].isHittingPlayer = false;
             }//for batarangs
+            
+            
             
             //spikes
             for (var i = 0; i < this._spikeCount; i++) {
                 if (this._collision.check(this._spikes[i])) {
                     this._spikes[i].isColliding = true;
                     
-                    this._lives--;
-                    this._livesLabel.text = "Lives: " + this._lives;
+                    lives--;
+                    this._livesLabel.text = "Lives: " + lives;
                 } else {
                     for (var j = 0; j < this._spikeCount; j++) {
                         if (j != i && this._enemyCollision[j].check(this._batarangs[i])) {
@@ -146,7 +149,7 @@ module scenes {
                 this._spikes[i].isColliding = false;
             }//for spikes
 
-            if (this._lives <= 0) {
+            if (lives <= 0) {
                 console.log("player ran out of lives");
                 scene = config.Scene.END;
                 changeScene();

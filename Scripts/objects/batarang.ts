@@ -2,7 +2,8 @@ module objects {
     // BATWING (ENEMY) CLASS ++++++++++++++++++++++++++++++++++++
     export class Batarang extends objects.GameObject {
         // PRIVATE INSTANCE VARIABLES +++++++++++++++++
-        public isColliding: boolean;
+        public isHittingBat: boolean;
+        public isHittingPlayer: boolean;
 
         // CONSTRUCTOR METHOD +++++++++++++++++++++++++
         constructor() {
@@ -11,7 +12,8 @@ module objects {
             this._reset(this._rightBounds);
             this.name = "batarang";
 
-            this.isColliding = false;
+            this.isHittingBat = false;
+            this.isHittingPlayer = false;
         }
 
         // PRIVATE METHODS +++++++++++++++++++++++++++++
@@ -29,15 +31,26 @@ module objects {
 
             this.x = Math.floor(Math.random() * this._rightBounds) + this._leftBounds;
             this.y = value;
-        }
+        }//_reset()
+        
+        
+        //reverse the horizontal motion of object (bounce)
+        public bounceX(): void {
+            this._speed.x = -this._speed.x;
+            console.log("Bounced")
+        }//bounceX
 
 
         // PUBLIC METHODS ++++++++++++++++++++++++++++++
         // scroll the enemy across the screen
         public update(): void {
-            if (this.isColliding) {
+            if (this.isHittingPlayer) {
                 this._reset(this._topBounds);
             } else {
+                if (this.isHittingBat){
+                    this.bounceX();
+                    
+                }
                 this._checkBounds(this._leftBounds);
                 this.y += this._speed.y;
                 this.x -= this._speed.x;
@@ -45,10 +58,7 @@ module objects {
         }//update()
         
         
-        //reverse the horizontal motion of object (bounce)
-        public bounceX(): void {
-            this._speed.x = -this._speed.x;
-        }//bounceX
+        
         
     }//class
 }//module

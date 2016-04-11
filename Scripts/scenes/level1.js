@@ -17,8 +17,8 @@ var scenes;
         Level1.prototype.start = function () {
             // Set starting score
             score = 0;
-            // Set lives = 9
-            this._lives = 5;
+            // Set lives to 5
+            lives = 5;
             // Set Enemy Count
             this._batarangCount = 5;
             // Instantiate Enemy array
@@ -43,7 +43,7 @@ var scenes;
             // add labels to scene
             this._scoreLabel = new objects.Label("Score: " + score + " m", "35px Consolas", "#FFFFFF", 50, 50, false);
             this.addChild(this._scoreLabel);
-            this._livesLabel = new objects.Label("Lives: " + this._lives, "35px Consolas", "#FFFFFF", config.Screen.WIDTH - 200, 50, false);
+            this._livesLabel = new objects.Label("Lives: " + lives, "35px Consolas", "#FFFFFF", config.Screen.WIDTH - 200, 50, false);
             this.addChild(this._livesLabel);
             // add collision manager to the scene
             this._collision = new managers.Collision(this._player);
@@ -60,22 +60,23 @@ var scenes;
             // check for collisions
             for (var i = 0; i < this._batarangCount; i++) {
                 if (this._collision.check(this._batarangs[i])) {
-                    this._batarangs[i].isColliding = true;
-                    //this._batarangs[i].bounceX();           //bounce away
-                    this._lives--;
-                    this._livesLabel.text = "Lives: " + this._lives;
+                    this._batarangs[i].isHittingPlayer = true;
+                    lives--;
+                    this._livesLabel.text = "Lives: " + lives;
                 }
                 else {
                     for (var j = 0; j < this._batarangCount; j++) {
                         if (j != i && this._enemyCollision[j].check(this._batarangs[i])) {
-                            this._batarangs[i].isColliding = true;
+                            this._batarangs[i].isHittingBat = true;
+                            console.log("Bat on Bat collision: ");
                         }
                     }
                 }
                 this._batarangs[i].update();
-                this._batarangs[i].isColliding = false;
-            }
-            if (this._lives <= 0) {
+                this._batarangs[i].isHittingBat = false;
+                this._batarangs[i].isHittingPlayer = false;
+            } //for check all batarangs
+            if (lives <= 0) {
                 console.log("player ran out of lives");
                 scene = config.Scene.LEVEL2; //testing
                 changeScene();

@@ -7,6 +7,7 @@ var stats;
 var currentScene;
 var scene;
 var score;
+var lives;
 // Game Scenes
 var menu;
 var instructions;

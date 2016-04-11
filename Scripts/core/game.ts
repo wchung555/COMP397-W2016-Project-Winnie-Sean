@@ -10,6 +10,7 @@ var currentScene: objects.Scene;
 var scene: number;
 
 var score:number;
+var lives: number;
 
 // Game Scenes
 var menu: scenes.Menu;
@@ -17,6 +18,9 @@ var instructions: scenes.Instructions;
 var level1: scenes.Level1;
 var level2: scenes.Level2;
 var end: scenes.End;
+
+
+
 
 var assetData: objects.Asset[] = [
     // Add your Assets here
