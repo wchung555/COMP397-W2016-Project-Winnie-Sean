@@ -43,7 +43,7 @@ Kept batwing object file for this commit; removed from reference path.
   **KNOWN ERRORS**  
   - [x] Spikes not scrolling.  
   - [ ] Spikes being created at `y=0` instead of `y= (World.floor - regY)`  
-\---------------------------------------------------------------------------------- 
+\----------------------------------------------------------------------------------  
 ##### Apr. 11 ========================================================================   
 ###### Completed functionality on spikes, bug fixes, enhancements: (S)  
 - Fixed spike  
@@ -56,3 +56,10 @@ Kept batwing object file for this commit; removed from reference path.
 - Fixed Batarang collisions.
 - Changed `_lives` from level-scope to game scope. Renamed to `lives`.  
   Allows for lives to carry over to the next screen. The better a player does in the level before, the better their chances of success are in the later levels.  
+\-----------------------------------------------------------------------------------------   
+###### Added Projectile class. Configured interaction:  
+- Added collision checker to level 2 for projectiles on spikes.  
+- Add mouse click handler to control firing plasma.  
+ **Known Issues**  
+   - [ ] Spikes not all generating.  
+   - [ ] Spikes not recognizing collision with plasma.  

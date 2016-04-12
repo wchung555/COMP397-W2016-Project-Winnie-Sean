@@ -18,7 +18,7 @@ var objects;
             this.y = objects.World.floor - this.height + 3;
             this._speed.x = 5;
             this._rightBounds = config.Screen.WIDTH;
-            this.isColliding = false;
+            this.isHittingPlayer = false;
         }
         // PRIVATE METHODS +++++++++++++++++++++++++++++
         // check to see if the left of the enemy is outside the viewport
@@ -51,7 +51,7 @@ var objects;
         // PUBLIC METHODS ++++++++++++++++++++++++++++++
         // scroll the enemy across the screen
         Spikes.prototype.update = function () {
-            if (this.isColliding) {
+            if (this.isHittingPlayer || this.projectileHit) {
                 this._reset();
             }
             else {

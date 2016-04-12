@@ -14,7 +14,7 @@ var objects;
             this.width = this.getBounds().width;
             this.height = this.getBounds().height;
             this.regX = this.width * 0.5;
-            this.regY = (this.height * 0.5) - 2 ;
+            this.regY = (this.height * 0.5) - 3;
             this._leftBounds = this.width * 0.5;
             this._rightBounds = config.Screen.WIDTH - (this.width * 0.5);
             this.x = this._leftBounds + 20;

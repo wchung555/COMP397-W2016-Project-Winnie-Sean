@@ -2,7 +2,9 @@ module objects {
     // Spikes (ENEMY) CLASS ++++++++++++++++++++++++++++++++++++
     export class Spikes extends objects.GameObject {
         // PRIVATE INSTANCE VARIABLES +++++++++++++++++
-        public isColliding: boolean;
+        public isHittingPlayer: boolean;
+        public isHittingBat: boolean;
+        public projectileHit: boolean;
         static numSpikes: number = 0;
         static resetLock1: boolean = false;
         static resetLock2: boolean = false;
@@ -20,7 +22,7 @@ module objects {
             this._speed.x = 5;  
             this._rightBounds = config.Screen.WIDTH;
 
-            this.isColliding = false;
+            this.isHittingPlayer = false;
         }
 
         // PRIVATE METHODS +++++++++++++++++++++++++++++
@@ -61,7 +63,7 @@ module objects {
         // PUBLIC METHODS ++++++++++++++++++++++++++++++
         // scroll the enemy across the screen
         public update(): void {
-            if (this.isColliding) {
+            if (this.isHittingPlayer || this.projectileHit) {
                 this._reset();
             } else {
                 this._checkBounds(this._leftBounds);

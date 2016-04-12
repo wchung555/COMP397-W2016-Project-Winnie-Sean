@@ -1,11 +1,6 @@
-Completed functionality on spikes, bug fixes, enhancements:  
-- Fixed spike  
-  - Stopped rendering at top of screen. Renders correctly at the world floor.
-  - Corrected left to right motion.
-  - Fixed issue where spikes rendered in the game scene instead of outside.
-  **Known Issues** 
-  - [ ] Spikes still seem slightly predictable. Minor. Fix later.
-
-- Fixed Batarang collisions.
-- Changed `_lives` from level-scope to game scope. Renamed to `lives`.  
-  Allows for lives to carry over to the next screen. The better a player does in the level before, the better their chances of success are in the later levels.  
+Added Projectile class. Configured interaction:  
+- Added collision checker to level 2 for projectiles on spikes.  
+- Add mouse click handler to control firing plasma.  
+ **Known Issues**  
+   - [ ] Spikes not all generating.  
+   - [ ] Spikes not recognizing collision with plasma.  

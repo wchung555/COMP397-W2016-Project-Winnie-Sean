@@ -1,0 +1,58 @@
+module managers {
+    // ENEMY COLLISION MANAGER CLASS
+    export class projectileCollision {
+        // PRIVATE INSTANCE VARIABLES
+        private _enemy: objects.GameObject;
+        
+        constructor(enemy:objects.GameObject) {
+            this._enemy = enemy;
+        }
+        
+        // find the distance between two points
+        public distance(startPoint:createjs.Point, endPoint:createjs.Point):number {
+            return Math.sqrt(Math.pow((endPoint.x - startPoint.x),2) + Math.pow(endPoint.y - startPoint.y,2))
+        }
+        
+        // determine if the player's avatar collides with the specified object
+        public check(object:objects.GameObject): boolean {
+            var startPoint:createjs.Point = new createjs.Point();
+            var endPoint:createjs.Point = new createjs.Point();
+            var playerHalfHeight:number = this._enemy.height * 0.5;
+            var objectHalfHeight:number = object.height * 0.5;
+            var minimumDistance:number = playerHalfHeight + objectHalfHeight;
+            var isCollision = false;
+            var message: String;
+            
+            startPoint.x = this._enemy.x;
+            startPoint.y = this._enemy.y;
+            
+            endPoint.x = object.centerX + object.x;
+            endPoint.y = object.centerY + object.y;
+            
+            
+            /* check if the distance between the player and 
+              the other object is less than the minimum distance */
+            if(this.distance(startPoint, endPoint) < minimumDistance) {
+                //var message: string = "";
+                // check if it's an enemy hit
+                if(object.name === "batarang") {
+                    message = "batarang";
+                    //console.log("inter-enemy collision detected");
+                    
+                    //createjs.Sound.play("stabSound");
+                    
+                    /*** TO-DO ****** Add code for checking if objects travel in opposite directions * * * * * * * * */
+                }
+                
+                if(object.name === "projectile"){
+                    message = "projectile";
+                }
+                
+                isCollision = true;
+                
+            }
+            
+            return isCollision;
+        }
+    }
+}
