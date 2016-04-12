@@ -21,7 +21,7 @@ Last Modified: April 11, 2016 by Sean Smith
 - Changed enemy from cat to batarang.  
 - Added Batarang class to replace Batwing class; virtually no changes.  
 Kept batwing object file for this commit; removed from reference path.  
-\----------------------------------------------------------------------------------  
+\----------------------------------------------------------------------------------    
 ###### Implemented new method of scrolling the game world: (S)  
 - Changed objects.World to have a programmable setting to add a second instance of background for modified scroll method.  
 - Updated menu and Level 1 scenes to use new setting in objects.World.  
@@ -29,7 +29,7 @@ Kept batwing object file for this commit; removed from reference path.
        - [ ] seems to be a 2-3 pixel gap between first and second instance of world background objects.  
             Attempted patch: Subtract 5 from new reset position to create overlap. Made no difference.  
 - Shifted player object down to ground level.  
-\----------------------------------------------------------------------------------  
+\----------------------------------------------------------------------------------    
 ###### Implemented new level & Bug fixes:  (S)  
 - Set play button to go straight to level 2 for testing.  
 - Began fix on inter-batarang collision detection.  
@@ -43,7 +43,7 @@ Kept batwing object file for this commit; removed from reference path.
   **KNOWN ERRORS**  
   - [x] Spikes not scrolling.  
   - [ ] Spikes being created at `y=0` instead of `y= (World.floor - regY)`  
-\---------------------------------------------------------------------------------- 
+\----------------------------------------------------------------------------------  
 ##### Apr. 11 ========================================================================   
 ###### Completed functionality on spikes, bug fixes, enhancements: (S)  
 - Fixed spike  
