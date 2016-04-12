@@ -10,10 +10,12 @@ Last Modified: April 11, 2016 by Sean Smith
 **For known errors, a check mark ([x]) means fixed or patched**
 ##### Apr. 4:  
 ###### Initial commit (W)  
+\--------------------------------------------------------------------------------------  
 ##### Apr. 8: 
-###### allowed change to Play scene; set motion and boundaries of player avatar (S)  
+###### Allowed change to Play scene; set motion and boundaries of player avatar (S)  
+\-------------------------------------------------------------------------------------  
 ##### Apr. 10:  
-###### added level 1, removed unused assets; TODO: include correct asset for batwing (W)  
+###### Added level 1, removed unused assets; TODO: include correct asset for batwing (W)  
 \----------------------------------------------------------------------------------    
 ###### Tweak assets and minor changes:  (S)
 - Changed enemy from cat to batarang.  
@@ -41,8 +43,9 @@ Kept batwing object file for this commit; removed from reference path.
   **KNOWN ERRORS**  
   - [x] Spikes not scrolling.  
   - [ ] Spikes being created at `y=0` instead of `y= (World.floor - regY)`  
-\----------------------------------------------------------------------------------
-  ###### Completed functionality on spikes, bug fixes, enhancements:  
+\---------------------------------------------------------------------------------- 
+##### Apr. 11 ========================================================================   
+###### Completed functionality on spikes, bug fixes, enhancements: (S)  
 - Fixed spike  
   - Stopped rendering at top of screen. Renders correctly at the world floor.  
   - Corrected left to right motion.  
