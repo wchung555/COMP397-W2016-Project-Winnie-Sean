@@ -63,3 +63,6 @@ Kept batwing object file for this commit; removed from reference path.
  **Known Issues**  
    - [ ] Spikes not all generating.  
    - [ ] Spikes not recognizing collision with plasma.  
+\-----------------------------------------------------------------------------------------  
+##### Apr. 12:  
+###### Fixed problems with projetiles; TODO: clean up code (W)  

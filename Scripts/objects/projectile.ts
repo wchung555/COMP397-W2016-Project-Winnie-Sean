@@ -20,6 +20,7 @@ module objects {
             this.y =  World.floor - this.height +3;  
             
             this._speed.x = 5;  
+            this._speed.y = .5;
             this._rightBounds = config.Screen.WIDTH;
             this._leftBounds = -this.width;
 
@@ -58,11 +59,11 @@ module objects {
                 //do nothing.
             } else if (this.isColliding) { // if it has been fired and is colliding with something
                 this._reset();
-            } else if (this.x > this._rightBounds){
-                this._reset();
-                
+            } else if (this.x > this._rightBounds || this.y > this._bottomBounds){
+                this._reset();                
             } else {
                 this.x += this._speed.x;
+                this.y += this._speed.y;
             }
             
             
@@ -70,8 +71,8 @@ module objects {
         
         public fire(playerX: number, playerY: number): void {
             this._fired = true;
-            this.x = playerX + 44;
-            this.y = playerY + 10;
+            this.x = playerX + 20;
+            this.y = playerY - 20;
             this.update();
         }
         /*

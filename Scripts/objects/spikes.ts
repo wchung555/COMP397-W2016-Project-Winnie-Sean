@@ -8,6 +8,8 @@ module objects {
         static numSpikes: number = 0;
         static resetLock1: boolean = false;
         static resetLock2: boolean = false;
+        
+        public isColliding: boolean;
 
         // CONSTRUCTOR METHOD +++++++++++++++++++++++++
         constructor() {
@@ -63,7 +65,7 @@ module objects {
         // PUBLIC METHODS ++++++++++++++++++++++++++++++
         // scroll the enemy across the screen
         public update(): void {
-            if (this.isHittingPlayer || this.projectileHit) {
+            if (this.isColliding) {
                 this._reset();
             } else {
                 this._checkBounds(this._leftBounds);

@@ -33,7 +33,6 @@ var objects;
         //reverse the horizontal motion of object (bounce)
         Batarang.prototype.bounceX = function () {
             this._speed.x = -this._speed.x;
-            console.log("Bounced");
         }; //bounceX
         // PUBLIC METHODS ++++++++++++++++++++++++++++++
         // scroll the enemy across the screen
@@ -51,8 +50,7 @@ var objects;
             } //else
         }; //update()
         return Batarang;
-    }(objects.GameObject));
+    })(objects.GameObject);
     objects.Batarang = Batarang; //class
 })(objects || (objects = {})); //module
-
 //# sourceMappingURL=batarang.js.map

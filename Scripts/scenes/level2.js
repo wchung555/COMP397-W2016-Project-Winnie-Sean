@@ -30,8 +30,8 @@ var scenes;
             this._enemyCollision = new Array(this._batarangCount);
             this._spikes = new Array(this._spikeCount);
             this._spikeCollision = new Array(this._spikeCount);
-            this._plasmas = new Array(this._plasmaCount);
-            this._projectileCollision = new Array(this._plasmaCount);
+            // this._plasmas = new Array<objects.Projectile>(this._plasmaCount);
+            // this._projectileCollision = new Array<managers.projectileCollision>(this._plasmaCount);
             // add world to the scene
             this._background1 = new objects.World();
             this.addChild(this._background1);
@@ -52,12 +52,13 @@ var scenes;
                 this._spikes[i] = new objects.Spikes();
                 this.addChild(this._spikes[i]);
                 this._spikeCollision[i] = new managers.EnemyCollision(this._spikes[i]);
-                this._projectileCollision[i] = new managers.projectileCollision(this._spikes[i]);
             }
-            for (var i = 0; i < this._plasmaCount; i++) {
-                this._plasmas[i] = new objects.Projectile();
-                this.addChild(this._plasmas[i]);
-            }
+            this.plasma = new objects.Projectile();
+            this.addChild(this.plasma);
+            // for (var i: number = 0; i < this._plasmaCount; i++) {
+            //     this._plasmas[i] = new objects.Projectile();
+            //     this.addChild(this._plasmas[i]);                
+            // }
             // add labels to scene
             this._scoreLabel = new objects.Label("Score: " + score + " m", "35px Consolas", "#FFFFFF", 50, 50, false);
             this.addChild(this._scoreLabel);
@@ -87,7 +88,6 @@ var scenes;
                     for (var j = 0; j < this._batarangCount; j++) {
                         if (j != i && this._enemyCollision[j].check(this._batarangs[i])) {
                             this._batarangs[i].isHittingBat = true;
-                            console.log("Bat on Bat collision: ");
                         } //if
                     } //for
                 } //else
@@ -99,52 +99,55 @@ var scenes;
             for (var i = 0; i < this._spikeCount; i++) {
                 if (this._collision.check(this._spikes[i])) {
                     this._spikes[i].isHittingPlayer = true;
+                    this._spikes[i].isColliding = true;
                     lives--;
                     this._livesLabel.text = "Lives: " + lives;
                 }
                 else {
-                    for (var j = 0; j < this._plasmaCount; j++) {
-                        if (this._projectileCollision[i].check(this._plasmas[j])) {
-                            this._spikes[i].projectileHit = true;
-                            this._plasmas[j].isColliding = true;
-                            console.log("Spike blasted! ");
-                        } //if
-                    } //for
+                    if (this._spikeCollision[i].check(this.plasma)) {
+                        this._spikes[i].isColliding = true;
+                        this.plasma.isColliding = true;
+                        console.log('spike meets plasma');
+                    }
                 } //else
                 this._spikes[i].update();
+                this._spikes[i].isColliding = false;
+                this.plasma.isColliding = false;
                 this._spikes[i].isHittingBat = false;
                 this._spikes[i].isHittingPlayer = false;
                 this._spikes[i].projectileHit = false;
             } //for spikes
             //plasma blasts
-            for (var i = 0; i < this._plasmaCount; i++) {
-                this._plasmas[i].update();
-            }
+            this.plasma.update();
+            // for (var i = 0; i < this._plasmaCount; i++){
+            //     this._plasmas[i].update();
+            // }
             if (lives <= 0) {
                 console.log("player ran out of lives");
                 scene = config.Scene.END;
                 changeScene();
             }
             else if (score >= 1000) {
-                console.log("transfer to level 3");
             }
         };
         //EVENT HANDLERS ++++++++++++++++++++
         Level2.prototype._mouseClick = function (event) {
-            console.log("MOUSE CLICKED");
             var fired = false;
-            for (var i = 0; i < this._plasmaCount; i++) {
-                if (!this._plasmas[i]._fired) {
-                    this._plasmas[i].fire(this._player.x, this._player.y);
-                    fired = true;
-                } //if
-                if (fired)
-                    break;
+            if (!this.plasma._fired) {
+                this.plasma.fire(this._player.x, this._player.y);
+                fired = true;
             }
+            // for(var i = 0; i < this._plasmaCount; i++) {
+            //     if (!this._plasmas[i]._fired){
+            //         this._plasmas[i].fire(this._player.x, this._player.y);
+            //         fired = true;
+            //     }//if                
+            //     if(fired)
+            //     {break;}
+            // }
         };
         return Level2;
-    }(objects.Scene));
+    })(objects.Scene);
     scenes.Level2 = Level2;
 })(scenes || (scenes = {}));
-
 //# sourceMappingURL=level2.js.map

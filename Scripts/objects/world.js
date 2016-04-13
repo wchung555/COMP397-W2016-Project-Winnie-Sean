@@ -46,8 +46,7 @@ var objects;
         World.boundVal = config.Screen.WIDTH;
         World.floor = 428;
         return World;
-    }(objects.GameObject));
+    })(objects.GameObject);
     objects.World = World;
 })(objects || (objects = {}));
-
 //# sourceMappingURL=world.js.map

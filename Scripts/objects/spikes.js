@@ -51,7 +51,7 @@ var objects;
         // PUBLIC METHODS ++++++++++++++++++++++++++++++
         // scroll the enemy across the screen
         Spikes.prototype.update = function () {
-            if (this.isHittingPlayer || this.projectileHit) {
+            if (this.isColliding) {
                 this._reset();
             }
             else {
@@ -63,8 +63,7 @@ var objects;
         Spikes.resetLock1 = false;
         Spikes.resetLock2 = false;
         return Spikes;
-    }(objects.GameObject));
+    })(objects.GameObject);
     objects.Spikes = Spikes; //class
 })(objects || (objects = {})); //module
-
 //# sourceMappingURL=spikes.js.map

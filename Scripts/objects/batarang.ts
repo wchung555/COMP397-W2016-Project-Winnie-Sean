@@ -37,7 +37,6 @@ module objects {
         //reverse the horizontal motion of object (bounce)
         public bounceX(): void {
             this._speed.x = -this._speed.x;
-            console.log("Bounced")
         }//bounceX
 
 

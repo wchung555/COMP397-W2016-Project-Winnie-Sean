@@ -17,6 +17,7 @@ var objects;
             this.name = "projectile";
             this.y = objects.World.floor - this.height + 3;
             this._speed.x = 5;
+            this._speed.y = .5;
             this._rightBounds = config.Screen.WIDTH;
             this._leftBounds = -this.width;
             this.isColliding = false;
@@ -46,25 +47,25 @@ var objects;
             else if (this.isColliding) {
                 this._reset();
             }
-            else if (this.x > this._rightBounds) {
+            else if (this.x > this._rightBounds || this.y > this._bottomBounds) {
                 this._reset();
             }
             else {
                 this.x += this._speed.x;
+                this.y += this._speed.y;
             }
         }; //update()
         Projectile.prototype.fire = function (playerX, playerY) {
             this._fired = true;
-            this.x = playerX + 44;
-            this.y = playerY + 10;
+            this.x = playerX + 20;
+            this.y = playerY - 20;
             this.update();
         };
         Projectile.numSpikes = 0;
         Projectile.resetLock1 = false;
         Projectile.resetLock2 = false;
         return Projectile;
-    }(objects.GameObject));
+    })(objects.GameObject);
     objects.Projectile = Projectile; //class
 })(objects || (objects = {})); //module
-
 //# sourceMappingURL=projectile.js.map
