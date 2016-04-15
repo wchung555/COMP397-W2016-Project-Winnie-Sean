@@ -47,7 +47,7 @@ var scenes;
             this._sceneLabel.regX = this._sceneLabel.getBounds().width * 0.5;
             this._sceneLabel.regY = this._sceneLabel.getBounds().height * 0.5;
             this.addChild(this._sceneLabel);
-            this._startButton = new objects.Button("playButton", config.Screen.CENTER_X, config.Screen.CENTER_Y, false);
+            this._startButton = new objects.Button("playButton", config.Screen.CENTER_X, config.Screen.CENTER_Y + 100, false);
             this._startButton.regX = this._startButton.width * .5;
             this._startButton.regY = this._startButton.height * .5;
             this.addChild(this._startButton);

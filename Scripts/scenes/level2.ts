@@ -96,7 +96,7 @@ module scenes {
             this.addChild(this._sceneLabel);
             
             this._startButton = new objects.Button(
-                "playButton", config.Screen.CENTER_X, config.Screen.CENTER_Y, false);
+                "playButton", config.Screen.CENTER_X, config.Screen.CENTER_Y+100, false);
                 this._startButton.regX = this._startButton.width*.5;
                 this._startButton.regY = this._startButton.height*.5;
             this.addChild(this._startButton);
