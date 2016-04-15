@@ -66,3 +66,6 @@ Kept batwing object file for this commit; removed from reference path.
 \-----------------------------------------------------------------------------------------  
 ##### Apr. 12:  
 ###### Fixed problems with projetiles; TODO: clean up code (W)  
+\-----------------------------------------------------------------------------------------  
+##### Apr. 15:  
+###### Refactored level two (W)  
