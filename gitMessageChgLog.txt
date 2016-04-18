@@ -1,4 +1,5 @@
-Fixed Background scroll issue. Added new assets:  
-- Changed the way the background is rendered  
-- Change Avatar. Add new background for level 2.  
-- Add instructions background. Error rendering.
+Added Boss Class:  
+- checkHealth function for game over condition  
+- Every projectile created has hitpoints. Damage read and updated by Boss class.
+- In scene object, simply check for collision and if it has collided then set bossObject.projectileHit to true.
+- *tweak* forgot to add projectileHit reset after handling condition.
