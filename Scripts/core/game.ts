@@ -32,9 +32,10 @@ var assetData: objects.Asset[] = [
     { id: "projectile", src: "../../Assets/images/projectile.png" },
     { id: "instructionButton", src: "../../Assets/images/instructionButton.png" },
     { id: "playButton", src: "../../Assets/images/playButton.png" },
-    { id: "Player", src: "../../Assets/images/Player.png" },
+    { id: "Player", src: "../../Assets/images/hood.png" },
     { id: "quitButton", src: "../../Assets/images/quitButton.png" },
-    { id: "WorldPlatform", src: "../../Assets/images/WorldPlatform.png" }
+    { id: "L1_Platform", src: "../../Assets/images/WorldPlatform2.png" },
+    { id: "L2_Platform", src: "../../Assets/images/PlatformL2.png" }
 ];
 
 function preload() {

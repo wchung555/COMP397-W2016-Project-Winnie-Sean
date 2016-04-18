@@ -1,6 +1,3 @@
-Added Projectile class. Configured interaction:  
-- Added collision checker to level 2 for projectiles on spikes.  
-- Add mouse click handler to control firing plasma.  
- **Known Issues**  
-   - [ ] Spikes not all generating.  
-   - [ ] Spikes not recognizing collision with plasma.  
+Fixed Background scroll issue. Added new assets:  
+- Changed the way the background is rendered  
+- Change Avatar. Add new background for level 2.  

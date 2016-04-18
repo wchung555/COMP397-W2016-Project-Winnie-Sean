@@ -6,8 +6,12 @@ module objects {
         static boundVal: number = config.Screen.WIDTH;
         static floor: number = 428;
         // CONSTRUCTOR METHOD +++++++++++++++++++++++++
-        constructor() {
-            super("WorldPlatform");
+        constructor( level: string  ) {
+            super( level );
+            
+            World.resetVal = 0;
+            World.boundVal = config.Screen.WIDTH;
+            World.floor = 428;
 
             this._speed.x = 5; //space speed
             this._reset(0);
@@ -42,7 +46,7 @@ module objects {
                 //First mode is default; A single instance of an image is reset repeatedly.
                 //Second mode uses a second instance of world image to scroll next to it for smoothness.
         public setSecondary(): void {
-            World.resetVal = this.width;
+            World.resetVal = this.width-10;
             World.boundVal = -this.width;
             this._reset(World.resetVal);
         }

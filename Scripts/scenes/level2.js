@@ -33,12 +33,13 @@ var scenes;
             // this._plasmas = new Array<objects.Projectile>(this._plasmaCount);
             // this._projectileCollision = new Array<managers.projectileCollision>(this._plasmaCount);
             // add world to the scene
-            this._background1 = new objects.World();
+            this._background1 = new objects.World("L2_Platform");
             this.addChild(this._background1);
-            //add secondary for smooth scroll
-            this._background2 = new objects.World();
-            this._background2.setSecondary();
-            this.addChild(this._background2);
+            /* //add secondary for smooth scroll
+     this._background2 = new objects.World();
+     this._background2.setSecondary();
+     this.addChild(this._background2);
+*/
             // add player to the scene
             this._player = new objects.Player();
             this.addChild(this._player);
@@ -72,7 +73,7 @@ var scenes;
         // PLAY Scene updates here
         Level2.prototype.update = function () {
             this._background1.update();
-            this._background2.update();
+            //this._background2.update();
             this._player.update();
             score++;
             this._scoreLabel.text = "Score: " + score + " m";
@@ -83,6 +84,7 @@ var scenes;
                     this._batarangs[i].isHittingPlayer = true;
                     lives--;
                     this._livesLabel.text = "Lives: " + lives;
+                    console.log("you've been hit by a batarang...that's gonna leave a mark!");
                 }
                 else {
                     for (var j = 0; j < this._batarangCount; j++) {
@@ -102,6 +104,7 @@ var scenes;
                     this._spikes[i].isColliding = true;
                     lives--;
                     this._livesLabel.text = "Lives: " + lives;
+                    console.log("ouch! you've been spiked!");
                 }
                 else {
                     if (this._spikeCollision[i].check(this.plasma)) {
@@ -128,6 +131,7 @@ var scenes;
                 changeScene();
             }
             else if (score >= 1000) {
+                console.log("transfer to level 3");
             }
         };
         //EVENT HANDLERS ++++++++++++++++++++
@@ -147,7 +151,8 @@ var scenes;
             // }
         };
         return Level2;
-    })(objects.Scene);
+    }(objects.Scene));
     scenes.Level2 = Level2;
 })(scenes || (scenes = {}));
+
 //# sourceMappingURL=level2.js.map

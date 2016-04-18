@@ -16,12 +16,12 @@ var scenes;
         // Start Method
         Menu.prototype.start = function () {
             //Add Menu Background
-            this._menuBackground1 = new objects.World();
+            this._menuBackground1 = new objects.World("L1_Platform");
             this.addChild(this._menuBackground1);
-            //add secondary for smooth scroll
-            this._menuBackground2 = new objects.World();
-            this._menuBackground2.setSecondary();
-            this.addChild(this._menuBackground2);
+            /*//add secondary for smooth scroll
+        this._menuBackground2 = new objects.World("L1_Platform");
+        this._menuBackground2.setSecondary();
+        this.addChild(this._menuBackground2);*/
             //Add Player
             this._player = new objects.Player();
             this.addChild(this._player);
@@ -51,7 +51,7 @@ var scenes;
         // INTRO Scene updates here
         Menu.prototype.update = function () {
             this._menuBackground1.update();
-            this._menuBackground2.update();
+            //this._menuBackground2.update();
         };
         //EVENT HANDLERS ++++++++++++++++++++
         // INSTRUCTIONS Button click event handler
@@ -63,7 +63,7 @@ var scenes;
         // START Button click event handler
         Menu.prototype._startButtonClick = function (event) {
             // Switch to the PLAY Scene
-            scene = config.Scene.LEVEL2;
+            scene = config.Scene.LEVEL1;
             changeScene();
         };
         // EXIT Button click event handler
@@ -73,7 +73,8 @@ var scenes;
             changeScene();
         };
         return Menu;
-    })(objects.Scene);
+    }(objects.Scene));
     scenes.Menu = Menu;
 })(scenes || (scenes = {}));
+
 //# sourceMappingURL=menu.js.map

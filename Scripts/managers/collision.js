@@ -33,7 +33,8 @@ var managers;
             return isCollision;
         };
         return Collision;
-    })();
+    }());
     managers.Collision = Collision;
 })(managers || (managers = {}));
+
 //# sourceMappingURL=collision.js.map

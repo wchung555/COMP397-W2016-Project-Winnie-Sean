@@ -65,7 +65,8 @@ var objects;
         Projectile.resetLock1 = false;
         Projectile.resetLock2 = false;
         return Projectile;
-    })(objects.GameObject);
+    }(objects.GameObject));
     objects.Projectile = Projectile; //class
 })(objects || (objects = {})); //module
+
 //# sourceMappingURL=projectile.js.map

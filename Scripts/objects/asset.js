@@ -8,7 +8,8 @@ var objects;
             this.src = src;
         }
         return Asset;
-    })();
+    }());
     objects.Asset = Asset;
 })(objects || (objects = {}));
+
 //# sourceMappingURL=asset.js.map

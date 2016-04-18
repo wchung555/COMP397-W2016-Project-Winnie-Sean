@@ -3,7 +3,7 @@ module scenes {
     export class Level1 extends objects.Scene {
         //PRIVATE INSTANCE VARIABLES ++++++++++++
         private _background1: objects.World;
-        private _background2: objects.World;
+        //private _background2: objects.World;
         private _batarangs: objects.Batarang[];
         private _batarangCount: number;
         private _player: objects.Player;
@@ -37,12 +37,12 @@ module scenes {
             this._enemyCollision = new Array<managers.EnemyCollision>(this._batarangCount);
 
             // add world to the scene
-            this._background1 = new objects.World();
+            this._background1 = new objects.World("L1_Platform");
             this.addChild(this._background1);
-                    //add secondary for smooth scroll
+                 /*   //add secondary for smooth scroll
             this._background2 = new objects.World();
             this._background2.setSecondary();
-            this.addChild(this._background2);
+            this.addChild(this._background2);*/
 
             // add player to the scene
             this._player = new objects.Player();
@@ -81,7 +81,7 @@ module scenes {
         // PLAY Scene updates here
         public update(): void {
             this._background1.update();
-            this._background2.update();
+            // this._background2.update();
 
             this._player.update();
 
@@ -120,6 +120,12 @@ module scenes {
 
 
         //EVENT HANDLERS ++++++++++++++++++++
+        // EXIT Button click event handler
+        private _exitButtonClick(event: createjs.MouseEvent) {
+            // Switch to the END Scene
+            scene = config.Scene.END;
+            changeScene();
+        }
 
     }
 }

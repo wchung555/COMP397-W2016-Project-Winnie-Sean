@@ -25,12 +25,12 @@ var scenes;
             this._batarangs = new Array(this._batarangCount);
             this._enemyCollision = new Array(this._batarangCount);
             // add world to the scene
-            this._background1 = new objects.World();
+            this._background1 = new objects.World("L1_Platform");
             this.addChild(this._background1);
-            //add secondary for smooth scroll
-            this._background2 = new objects.World();
-            this._background2.setSecondary();
-            this.addChild(this._background2);
+            /*   //add secondary for smooth scroll
+       this._background2 = new objects.World();
+       this._background2.setSecondary();
+       this.addChild(this._background2);*/
             // add player to the scene
             this._player = new objects.Player();
             this.addChild(this._player);
@@ -53,7 +53,7 @@ var scenes;
         // PLAY Scene updates here
         Level1.prototype.update = function () {
             this._background1.update();
-            this._background2.update();
+            // this._background2.update();
             this._player.update();
             score++;
             this._scoreLabel.text = "Score: " + score + " m";
@@ -87,8 +87,16 @@ var scenes;
                 changeScene();
             }
         };
+        //EVENT HANDLERS ++++++++++++++++++++
+        // EXIT Button click event handler
+        Level1.prototype._exitButtonClick = function (event) {
+            // Switch to the END Scene
+            scene = config.Scene.END;
+            changeScene();
+        };
         return Level1;
-    })(objects.Scene);
+    }(objects.Scene));
     scenes.Level1 = Level1;
 })(scenes || (scenes = {}));
+
 //# sourceMappingURL=level1.js.map

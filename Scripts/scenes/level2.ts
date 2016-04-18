@@ -4,7 +4,7 @@ module scenes {
         //PRIVATE INSTANCE VARIABLES ++++++++++++
         //Scene- - - - - - - - - - - - - - - 
         private _background1: objects.World;
-        private _background2: objects.World;
+        //private _background2: objects.World;
         
         //non-Player- - - - - - - - - - - - - - -
         private _batarangs: objects.Batarang[];
@@ -68,13 +68,13 @@ module scenes {
 
             
             // add world to the scene
-            this._background1 = new objects.World();
+            this._background1 = new objects.World("L2_Platform");
             this.addChild(this._background1);
-                    //add secondary for smooth scroll
+                   /* //add secondary for smooth scroll
             this._background2 = new objects.World();
             this._background2.setSecondary();
             this.addChild(this._background2);
-
+*/
             // add player to the scene
             this._player = new objects.Player();
             this.addChild(this._player);
@@ -126,7 +126,7 @@ module scenes {
         // PLAY Scene updates here
         public update(): void {
             this._background1.update();
-            this._background2.update();
+            //this._background2.update();
 
             this._player.update();
 
