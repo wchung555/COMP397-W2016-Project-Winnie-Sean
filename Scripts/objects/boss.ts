@@ -76,6 +76,7 @@ module objects {
             if (this.projectileHit) {
                 this._health - Projectile.readHitPoints();
                 this.x -= this._speed.x
+                this.projectileHit = false;
             } 
             
         }//update()
