@@ -1,11 +1,11 @@
 module objects {
-    // Spikes (ENEMY) CLASS ++++++++++++++++++++++++++++++++++++
+    // PROJECTILE CLASS ++++++++++++++++++++++++++++++++++++
     export class Projectile extends objects.GameObject {
         // PRIVATE INSTANCE VARIABLES +++++++++++++++++
         public isColliding: boolean;
         public _fired: boolean;
         
-        static numSpikes: number = 0;
+        private static hitPoints: number = 10;
         static resetLock1: boolean = false;
         static resetLock2: boolean = false;
 
@@ -13,8 +13,7 @@ module objects {
         constructor() {
             super("projectile");
 
-            Spikes.numSpikes++;
-            //this._rightBounds += this._rightBounds + (Spikes.numSpikes * this.width)
+            
             this._reset();
             this.name = "projectile";
             this.y =  World.floor - this.height +3;  
@@ -26,6 +25,8 @@ module objects {
 
             this.isColliding = false;
             this._fired = false;
+           
+            
         }
 
         // PRIVATE METHODS +++++++++++++++++++++++++++++
@@ -75,6 +76,12 @@ module objects {
             this.y = playerY - 20;
             this.update();
         }
+        
+        
+        public static readHitPoints(): number {
+            return this.hitPoints;            
+        }
+        
         /*
         //reverse the horizontal motion of object (bounce)
         public bounceX(): void {

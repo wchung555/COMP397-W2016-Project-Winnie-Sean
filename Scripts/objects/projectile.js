@@ -5,14 +5,12 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var objects;
 (function (objects) {
-    // Spikes (ENEMY) CLASS ++++++++++++++++++++++++++++++++++++
+    // PROJECTILE CLASS ++++++++++++++++++++++++++++++++++++
     var Projectile = (function (_super) {
         __extends(Projectile, _super);
         // CONSTRUCTOR METHOD +++++++++++++++++++++++++
         function Projectile() {
             _super.call(this, "projectile");
-            objects.Spikes.numSpikes++;
-            //this._rightBounds += this._rightBounds + (Spikes.numSpikes * this.width)
             this._reset();
             this.name = "projectile";
             this.y = objects.World.floor - this.height + 3;
@@ -61,7 +59,10 @@ var objects;
             this.y = playerY - 20;
             this.update();
         };
-        Projectile.numSpikes = 0;
+        Projectile.readHitPoints = function () {
+            return this.hitPoints;
+        };
+        Projectile.hitPoints = 10;
         Projectile.resetLock1 = false;
         Projectile.resetLock2 = false;
         return Projectile;
