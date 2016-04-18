@@ -2,6 +2,9 @@
 module scenes {
     export class Level2 extends objects.Scene {
         //PRIVATE INSTANCE VARIABLES ++++++++++++
+        private _sceneLabel: objects.Label;
+        private _startButton: objects.Button;
+        
         //Scene- - - - - - - - - - - - - - - 
         private _background1: objects.World;
         //private _background2: objects.World;
@@ -17,7 +20,7 @@ module scenes {
         // private _plasmas: objects.Projectile[];
         private _plasmaCount: number;
         
-        //plater- - - - - - - - - - - - - - - - - -
+        //player- - - - - - - - - - - - - - - - - -
         private _player: objects.Player;
         //other- -- - - - - - - - - - - - - - - - 
         private _collision: managers.Collision;
@@ -78,17 +81,37 @@ module scenes {
             // add player to the scene
             this._player = new objects.Player();
             this.addChild(this._player);
+            
+            // add label, start button to scene
+            this._sceneLabel = new objects.Label(
+                "Level 2",
+                "60px Consolas",
+                "#FFFFFF",
+                config.Screen.CENTER_X,
+                config.Screen.CENTER_Y,
+                false
+            );
+            this._sceneLabel.regX = this._sceneLabel.getBounds().width * 0.5;
+            this._sceneLabel.regY = this._sceneLabel.getBounds().height * 0.5;
+            this.addChild(this._sceneLabel);
+            
+            this._startButton = new objects.Button(
+                "playButton", config.Screen.CENTER_X, config.Screen.CENTER_Y+100, false);
+                this._startButton.regX = this._startButton.width*.5;
+                this._startButton.regY = this._startButton.height*.5;
+            this.addChild(this._startButton);
+            this._startButton.on("click", this._startButtonClick, this);
 
             //add enemies to the scene
             for (var i: number = 0; i < this._batarangCount; i++) {
                 this._batarangs[i] = new objects.Batarang();
-                this.addChild(this._batarangs[i]);
+                // this.addChild(this._batarangs[i]);
                 this._enemyCollision[i] = new managers.EnemyCollision(this._batarangs[i]);
             }
             
             for (var i: number = 0; i < this._spikeCount; i++) {
                 this._spikes[i] = new objects.Spikes();
-                this.addChild(this._spikes[i]);
+                // this.addChild(this._spikes[i]);
                 this._spikeCollision[i] = new managers.EnemyCollision(this._spikes[i]);
                 // this._projectileCollision[i] = new managers.projectileCollision(this._spikes[i]);
             }
@@ -107,20 +130,36 @@ module scenes {
                 50,
                 50,
                 false);
-            this.addChild(this._scoreLabel);
+            // this.addChild(this._scoreLabel);
             this._livesLabel = new objects.Label("Lives: " + lives,
                 "35px Consolas",
                 "#FFFFFF",
                 config.Screen.WIDTH - 200,
                 50,
                 false);
-            this.addChild(this._livesLabel);
+            // this.addChild(this._livesLabel);
 
             // add collision manager to the scene
             this._collision = new managers.Collision(this._player);
 
             // add this scene to the global stage container
             stage.addChild(this);
+        }
+        
+        public play(): void {
+            //add enemies to the scene
+            for (var i: number = 0; i < this._batarangCount; i++) {
+                this.addChild(this._batarangs[i]);
+            }
+            
+            //add spikes to scene
+            for (var i: number = 0; i < this._spikeCount; i++) {
+                this.addChild(this._spikes[i]);
+            }
+           //add labels to scene
+           this.addChild(this._scoreLabel); 
+            this.addChild(this._livesLabel);
+            
         }
 
         // PLAY Scene updates here
@@ -229,7 +268,13 @@ module scenes {
             //     if(fired)
             //     {break;}
             // }
-            
+        }
+        
+        // START Button click event handler
+        private _startButtonClick(event: createjs.MouseEvent) {
+            this.removeChild(this._sceneLabel);
+            this.removeChild(this._startButton);
+            this.play();
         }
 
     }
