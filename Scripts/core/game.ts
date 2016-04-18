@@ -9,14 +9,16 @@ var stats: Stats;
 var currentScene: objects.Scene;
 var scene: number;
 
-var score:number;
+var score: number;
 var lives: number;
 
 // Game Scenes
 var menu: scenes.Menu;
 var instructions: scenes.Instructions;
 var level1: scenes.Level1;
+var level12: scenes.Level12;
 var level2: scenes.Level2;
+var level3: scenes.Level3;
 var end: scenes.End;
 
 
@@ -27,7 +29,8 @@ var assetData: objects.Asset[] = [
     { id: "battery", src: "../../Assets/images/battery.png" },
     { id: "EnemyBatman", src: "../../Assets/images/EnemyBatman.png" },
     { id: "EnemyCat", src: "../../Assets/images/EnemyCat.png" },
-    { id: "batarang", src: "../../Assets/images/batarang.png" },
+    { id: "hood", src: "../../Assets/images/EnemyBatman.png" },
+    { id: "batarang", src: "../../Assets/images/Batarang.png" },
     { id: "spikes", src: "../../Assets/images/spikes.png" },
     { id: "projectile", src: "../../Assets/images/projectile.png" },
     { id: "instructionButton", src: "../../Assets/images/instructionButton.png" },
@@ -66,7 +69,7 @@ function init(): void {
     setupStats();
 
     // set initial scene
-    scene = config.Scene.MENU;
+    scene = config.Scene.LEVEL3;
     changeScene();
 
     // play background music (infinite loop)
@@ -124,12 +127,26 @@ function changeScene(): void {
             currentScene = level1;
             console.log("Starting LEVEL 1 Scene");
             break;
+        case config.Scene.LEVEL12:
+            // show the PLAY scene
+            stage.removeAllChildren();
+            level12 = new scenes.Level12();
+            currentScene = level12;
+            console.log("Starting LEVEL 1.5 Scene");
+            break;
         case config.Scene.LEVEL2:
             // show the PLAY scene
             stage.removeAllChildren();
             level2 = new scenes.Level2();
             currentScene = level2;
             console.log("Starting LEVEL 2 Scene");
+            break;
+        case config.Scene.LEVEL3:
+            // show the PLAY scene
+            stage.removeAllChildren();
+            level3 = new scenes.Level3();
+            currentScene = level3;
+            console.log("Starting LEVEL 3 Scene");
             break;
         case config.Scene.END:
             // show the END scene

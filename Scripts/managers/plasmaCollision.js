@@ -38,8 +38,7 @@ var managers;
             return isCollision;
         };
         return projectileCollision;
-    }());
+    })();
     managers.projectileCollision = projectileCollision;
 })(managers || (managers = {}));
-
 //# sourceMappingURL=plasmaCollision.js.map

@@ -12,14 +12,17 @@ var lives;
 var menu;
 var instructions;
 var level1;
+var level12;
 var level2;
+var level3;
 var end;
 var assetData = [
     // Add your Assets here
     { id: "battery", src: "../../Assets/images/battery.png" },
     { id: "EnemyBatman", src: "../../Assets/images/EnemyBatman.png" },
     { id: "EnemyCat", src: "../../Assets/images/EnemyCat.png" },
-    { id: "batarang", src: "../../Assets/images/batarang.png" },
+    { id: "hood", src: "../../Assets/images/EnemyBatman.png" },
+    { id: "batarang", src: "../../Assets/images/Batarang.png" },
     { id: "spikes", src: "../../Assets/images/spikes.png" },
     { id: "projectile", src: "../../Assets/images/projectile.png" },
     { id: "instructionButton", src: "../../Assets/images/instructionButton.png" },
@@ -50,7 +53,7 @@ function init() {
     // sets up our stats counting workflow
     setupStats();
     // set initial scene
-    scene = config.Scene.MENU;
+    scene = config.Scene.LEVEL3;
     changeScene();
     // play background music (infinite loop)
     // createjs.Sound.play("bgm", { loop: -1 });
@@ -100,12 +103,26 @@ function changeScene() {
             currentScene = level1;
             console.log("Starting LEVEL 1 Scene");
             break;
+        case config.Scene.LEVEL12:
+            // show the PLAY scene
+            stage.removeAllChildren();
+            level12 = new scenes.Level12();
+            currentScene = level12;
+            console.log("Starting LEVEL 1.5 Scene");
+            break;
         case config.Scene.LEVEL2:
             // show the PLAY scene
             stage.removeAllChildren();
             level2 = new scenes.Level2();
             currentScene = level2;
             console.log("Starting LEVEL 2 Scene");
+            break;
+        case config.Scene.LEVEL3:
+            // show the PLAY scene
+            stage.removeAllChildren();
+            level3 = new scenes.Level3();
+            currentScene = level3;
+            console.log("Starting LEVEL 3 Scene");
             break;
         case config.Scene.END:
             // show the END scene
@@ -118,5 +135,4 @@ function changeScene() {
     console.log(currentScene.numChildren);
 }
 window.onload = preload;
-
 //# sourceMappingURL=game.js.map

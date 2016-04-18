@@ -63,8 +63,7 @@ var objects;
         Spikes.resetLock1 = false;
         Spikes.resetLock2 = false;
         return Spikes;
-    }(objects.GameObject));
+    })(objects.GameObject);
     objects.Spikes = Spikes; //class
 })(objects || (objects = {})); //module
-
 //# sourceMappingURL=spikes.js.map

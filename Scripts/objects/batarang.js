@@ -50,8 +50,7 @@ var objects;
             } //else
         }; //update()
         return Batarang;
-    }(objects.GameObject));
+    })(objects.GameObject);
     objects.Batarang = Batarang; //class
 })(objects || (objects = {})); //module
-
 //# sourceMappingURL=batarang.js.map

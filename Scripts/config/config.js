@@ -7,12 +7,14 @@ var config;
         Scene.MENU = 0;
         Scene.INSTRUCTIONS = 1;
         Scene.LEVEL1 = 2;
-        Scene.LEVEL2 = 3;
-        Scene.LEVEL3 = 4;
-        Scene.WIN = 5;
-        Scene.END = 6;
+        Scene.LEVEL12 = 3;
+        Scene.LEVEL2 = 4;
+        Scene.LEVEL23 = 5;
+        Scene.LEVEL3 = 6;
+        Scene.WIN = 7;
+        Scene.END = 8;
         return Scene;
-    }());
+    })();
     config.Scene = Scene;
     // Screen Constants
     var Screen = (function () {
@@ -23,7 +25,7 @@ var config;
         Screen.CENTER_X = 320;
         Screen.CENTER_Y = 210;
         return Screen;
-    }());
+    })();
     config.Screen = Screen;
     // Game Constants
     var Game = (function () {
@@ -31,8 +33,7 @@ var config;
         }
         Game.FPS = 60;
         return Game;
-    }());
+    })();
     config.Game = Game;
 })(config || (config = {}));
-
 //# sourceMappingURL=config.js.map

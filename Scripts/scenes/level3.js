@@ -3,32 +3,30 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-// LEVEL 2 SCENE
+// LEVEL 3 SCENE
 var scenes;
 (function (scenes) {
-    var Level2 = (function (_super) {
-        __extends(Level2, _super);
+    var Level3 = (function (_super) {
+        __extends(Level3, _super);
         // CONSTRUCTOR ++++++++++++++++++++++
-        function Level2() {
+        function Level3() {
             _super.call(this);
         }
         // PUBLIC METHODS +++++++++++++++++++++
         // Start Method
-        Level2.prototype.start = function () {
+        Level3.prototype.start = function () {
             //scene click event
             this.on("click", this._mouseClick, this);
             // Set starting score
             score = 0;
             // add level lives
             lives += 5;
+            this._bossLives = 100;
             // Set Enemy Count
-            this._batarangCount = 5;
-            this._spikeCount = 3;
+            this._batarangCount = 3;
             // Instantiate Enemy array
             this._batarangs = new Array(this._batarangCount);
             this._enemyCollision = new Array(this._batarangCount);
-            this._spikes = new Array(this._spikeCount);
-            this._spikeCollision = new Array(this._spikeCount);
             // add world to the scene
             this._background1 = new objects.World("L2_Platform");
             this.addChild(this._background1);
@@ -41,16 +39,14 @@ var scenes;
                 this.addChild(this._batarangs[i]);
                 this._enemyCollision[i] = new managers.EnemyCollision(this._batarangs[i]);
             }
-            for (var i = 0; i < this._spikeCount; i++) {
-                this._spikes[i] = new objects.Spikes();
-                this.addChild(this._spikes[i]);
-                this._spikeCollision[i] = new managers.EnemyCollision(this._spikes[i]);
-            }
             this._plasma = new objects.Projectile();
             this.addChild(this._plasma);
+            this._boss = new objects.Boss();
+            this._bossCollision = new managers.EnemyCollision(this._boss);
+            this.addChild(this._boss);
             // add labels to scene
-            this._scoreLabel = new objects.Label("Score: " + score + " m", "35px Consolas", "#FFFFFF", 50, 50, false);
-            this.addChild(this._scoreLabel);
+            this._bossLivesLabel = new objects.Label("Boss HP: " + this._bossLives, "35px Consolas", "#FFFFFF", 50, 50, false);
+            this.addChild(this._bossLivesLabel);
             this._livesLabel = new objects.Label("Lives: " + lives, "35px Consolas", "#FFFFFF", config.Screen.WIDTH - 200, 50, false);
             this.addChild(this._livesLabel);
             // add collision manager to the scene
@@ -59,24 +55,24 @@ var scenes;
             stage.addChild(this);
         };
         // PLAY Scene updates here
-        Level2.prototype.update = function () {
+        Level3.prototype.update = function () {
             this._background1.update();
-            //this._background2.update();
             this._player.update();
-            score++;
-            this._scoreLabel.text = "Score: " + score + " m";
+            this._boss.update();
             // check for collisions
-            //batarangs
             for (var i = 0; i < this._batarangCount; i++) {
                 if (this._collision.check(this._batarangs[i])) {
                     this._batarangs[i].isHittingPlayer = true;
                     lives--;
-                    this._livesLabel.text = "Lives: " + lives;
                     console.log("you've been hit by a batarang...that's gonna leave a mark!");
+                }
+                else if (this._collision.check(this._boss)) {
+                    lives--;
+                    console.log("you've been punched in the face by Batman...be thankful his glove wasn't poisoned");
                 }
                 else {
                     for (var j = 0; j < this._batarangCount; j++) {
-                        if (j != i && this._enemyCollision[j].check(this._batarangs[i])) {
+                        if (j != i && (this._enemyCollision[j].check(this._batarangs[i]) || this._enemyCollision[j].check(this._boss))) {
                             this._batarangs[i].isHittingBat = true;
                         } //if
                     } //for
@@ -84,53 +80,35 @@ var scenes;
                 this._batarangs[i].update();
                 this._batarangs[i].isHittingBat = false;
                 this._batarangs[i].isHittingPlayer = false;
-            } //for batarangs
-            //spikes           
-            for (var i = 0; i < this._spikeCount; i++) {
-                if (this._collision.check(this._spikes[i])) {
-                    this._spikes[i].isHittingPlayer = true;
-                    this._spikes[i].isColliding = true;
-                    lives--;
-                    this._livesLabel.text = "Lives: " + lives;
-                    console.log("ouch! you've been spiked!");
-                }
-                else {
-                    if (this._spikeCollision[i].check(this._plasma)) {
-                        this._spikes[i].isColliding = true;
-                        this._plasma.isColliding = true;
-                        console.log('spike meets plasma');
-                    }
-                } //else
-                this._spikes[i].update();
-                this._spikes[i].isColliding = false;
-                this._plasma.isColliding = false;
-                this._spikes[i].isHittingBat = false;
-                this._spikes[i].isHittingPlayer = false;
-                this._spikes[i].projectileHit = false;
-            } //for spikes
-            //plasma blasts
+            }
+            //boss
+            if (this._bossCollision.check(this._plasma)) {
+                this._bossLives--;
+                console.log("boss meets plasma");
+            }
+            //_plasma blasts
             this._plasma.update();
+            this._livesLabel.text = "Lives: " + lives;
+            this._bossLivesLabel.text = "Boss HP: " + this._bossLives;
             if (lives <= 0) {
                 console.log("player ran out of lives");
                 scene = config.Scene.END;
                 changeScene();
             }
-            else if (score >= 1000) {
-                console.log("transfer to level 3");
-                scene = config.Scene.LEVEL3;
-                changeScene();
+            else if (this._bossLives <= 0) {
+                console.log("transfer to WIN scene");
             }
         };
         //EVENT HANDLERS ++++++++++++++++++++
-        Level2.prototype._mouseClick = function (event) {
+        Level3.prototype._mouseClick = function (event) {
             var fired = false;
             if (!this._plasma._fired) {
                 this._plasma.fire(this._player.x, this._player.y);
                 fired = true;
             }
         };
-        return Level2;
+        return Level3;
     })(objects.Scene);
-    scenes.Level2 = Level2;
+    scenes.Level3 = Level3;
 })(scenes || (scenes = {}));
-//# sourceMappingURL=level2.js.map
+//# sourceMappingURL=level3.js.map
