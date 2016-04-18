@@ -80,7 +80,7 @@ module scenes {
                 this._spikeCollision[i] = new managers.EnemyCollision(this._spikes[i]);
             }
 
-            this._plasma = new objects.Projectile();
+            this._plasma = new objects.Projectile(.5);
             this.addChild(this._plasma);
 
             // add labels to scene

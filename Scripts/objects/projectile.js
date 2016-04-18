@@ -9,13 +9,13 @@ var objects;
     var Projectile = (function (_super) {
         __extends(Projectile, _super);
         // CONSTRUCTOR METHOD +++++++++++++++++++++++++
-        function Projectile() {
+        function Projectile(speedY) {
             _super.call(this, "projectile");
             this._reset();
             this.name = "projectile";
             this.y = objects.World.floor - this.height + 3;
             this._speed.x = 5;
-            this._speed.y = .5;
+            this._speed.y = speedY;
             this._rightBounds = config.Screen.WIDTH;
             this._leftBounds = -this.width;
             this.isColliding = false;
@@ -32,6 +32,7 @@ var objects;
         Projectile.prototype._reset = function () {
             this.x = this._leftBounds;
             this._fired = false;
+            this.isColliding = false;
         }; //reset()
         // PUBLIC METHODS ++++++++++++++++++++++++++++++
         // scroll the enemy across the screen

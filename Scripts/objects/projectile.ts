@@ -10,7 +10,7 @@ module objects {
         static resetLock2: boolean = false;
 
         // CONSTRUCTOR METHOD +++++++++++++++++++++++++
-        constructor() {
+        constructor(speedY:number) {
             super("projectile");
 
             
@@ -19,7 +19,7 @@ module objects {
             this.y =  World.floor - this.height +3;  
             
             this._speed.x = 5;  
-            this._speed.y = .5;
+            this._speed.y = speedY;
             this._rightBounds = config.Screen.WIDTH;
             this._leftBounds = -this.width;
 
@@ -44,6 +44,7 @@ module objects {
         protected _reset(): void {
             this.x = this._leftBounds;
             this._fired = false;
+            this.isColliding = false;
             
         }//reset()
 
@@ -80,13 +81,6 @@ module objects {
         
         public static readHitPoints(): number {
             return this.hitPoints;            
-        }
-        
-        /*
-        //reverse the horizontal motion of object (bounce)
-        public bounceX(): void {
-            this._speed.x = -this._speed.x;
-        }//bounceX
-        */
+        }        
     }//class
 }//module

@@ -22,25 +22,16 @@ var objects;
         // PRIVATE METHODS +++++++++++++++++++++++++++++
         // check to see if the left of the enemy is outside the viewport
         Boss.prototype._checkBounds = function () {
-            switch (this._direction) {
-                case "left":
-                    if (this.x <= this._leftBounds) {
-                        this._speed.x = -this._speed.x;
-                    }
-                    break;
-                case "right":
-                    if (this.x >= this._rightBounds) {
-                        this._speed.x = -this._speed.x;
-                    }
-                    break;
-                default:
-                    break;
+            if (this.x <= this._leftBounds) {
+                this._speed.x = -3;
+            }
+            else if (this.x >= this._rightBounds) {
+                this._speed.x = 3;
             }
         };
         // reset the enemy offscreen
         Boss.prototype._reset = function () {
             this.x = config.Screen.WIDTH + 10;
-            this._direction = "left";
         }; //reset()
         // PUBLIC METHODS ++++++++++++++++++++++++++++++
         // scroll the enemy across the screen
@@ -48,8 +39,7 @@ var objects;
             this._checkBounds();
             this.x -= this._speed.x;
             if (this.projectileHit) {
-                this._health - objects.Projectile.readHitPoints();
-                this.x -= this._speed.x;
+                this._health -= objects.Projectile.readHitPoints();
                 this.projectileHit = false;
             }
         }; //update()
