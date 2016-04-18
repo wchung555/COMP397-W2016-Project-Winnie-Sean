@@ -27,7 +27,8 @@ var assetData = [
     { id: "Player", src: "../../Assets/images/hood.png" },
     { id: "quitButton", src: "../../Assets/images/quitButton.png" },
     { id: "L1_Platform", src: "../../Assets/images/WorldPlatform2.png" },
-    { id: "L2_Platform", src: "../../Assets/images/PlatformL2.png" }
+    { id: "L2_Platform", src: "../../Assets/images/PlatformL2.png" },
+    { id: "InstructionsBackground", src: "../../Assets/images/InstructionsScreen.png" }
 ];
 function preload() {
     assets = new createjs.LoadQueue();

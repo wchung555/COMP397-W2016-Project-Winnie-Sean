@@ -1,3 +1,4 @@
 Fixed Background scroll issue. Added new assets:  
 - Changed the way the background is rendered  
 - Change Avatar. Add new background for level 2.  
+- Add instructions background. Error rendering.
