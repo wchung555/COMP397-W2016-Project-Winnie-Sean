@@ -22,7 +22,7 @@ var scenes;
             // add level lives
             lives += 5;
             // Set Enemy Count
-            this._batarangCount = 5;
+            this._batarangCount = 3;
             this._spikeCount = 3;
             // Instantiate Enemy array
             this._batarangs = new Array(this._batarangCount);
@@ -46,10 +46,12 @@ var scenes;
                 this.addChild(this._spikes[i]);
                 this._spikeCollision[i] = new managers.EnemyCollision(this._spikes[i]);
             }
+            this._component = new objects.Component();
+            this.addChild(this._component);
             this._plasma = new objects.Projectile(.5);
             this.addChild(this._plasma);
             // add labels to scene
-            this._scoreLabel = new objects.Label("Score: " + score + " m", "35px Consolas", "#FFFFFF", 50, 50, false);
+            this._scoreLabel = new objects.Label("Components: " + score, "35px Consolas", "#FFFFFF", 50, 50, false);
             this.addChild(this._scoreLabel);
             this._livesLabel = new objects.Label("Lives: " + lives, "35px Consolas", "#FFFFFF", config.Screen.WIDTH - 200, 50, false);
             this.addChild(this._livesLabel);
@@ -61,17 +63,14 @@ var scenes;
         // PLAY Scene updates here
         Level2.prototype.update = function () {
             this._background1.update();
-            //this._background2.update();
             this._player.update();
-            score++;
-            this._scoreLabel.text = "Score: " + score + " m";
             // check for collisions
             //batarangs
             for (var i = 0; i < this._batarangCount; i++) {
                 if (this._collision.check(this._batarangs[i])) {
                     this._batarangs[i].isHittingPlayer = true;
                     lives--;
-                    this._livesLabel.text = "Lives: " + lives;
+                    createjs.Sound.play("grunt");
                     console.log("you've been hit by a batarang...that's gonna leave a mark!");
                 }
                 else {
@@ -91,6 +90,7 @@ var scenes;
                     this._spikes[i].isHittingPlayer = true;
                     this._spikes[i].isColliding = true;
                     lives--;
+                    createjs.Sound.play("grunt");
                     this._livesLabel.text = "Lives: " + lives;
                     console.log("ouch! you've been spiked!");
                 }
@@ -108,6 +108,15 @@ var scenes;
                 this._spikes[i].isHittingPlayer = false;
                 this._spikes[i].projectileHit = false;
             } //for spikes
+            //component
+            if (this._collision.check(this._component)) {
+                this._component.isCollision = true;
+                score++;
+                createjs.Sound.play("powerup");
+            }
+            this._component.update();
+            this._scoreLabel.text = "Components: " + score;
+            this._livesLabel.text = "Lives: " + lives;
             //plasma blasts
             this._plasma.update();
             if (lives <= 0) {
@@ -115,9 +124,9 @@ var scenes;
                 scene = config.Scene.END;
                 changeScene();
             }
-            else if (score >= 1000) {
+            else if (score >= 10) {
                 console.log("transfer to level 3");
-                scene = config.Scene.LEVEL3;
+                scene = config.Scene.LEVEL23;
                 changeScene();
             }
         };
@@ -127,6 +136,7 @@ var scenes;
             if (!this._plasma._fired) {
                 this._plasma.fire(this._player.x, this._player.y);
                 fired = true;
+                createjs.Sound.play("plasma");
             }
         };
         return Level2;

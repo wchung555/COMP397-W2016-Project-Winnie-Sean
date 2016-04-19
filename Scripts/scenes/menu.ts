@@ -82,6 +82,7 @@ module scenes {
         //EVENT HANDLERS ++++++++++++++++++++
         // INSTRUCTIONS Button click event handler
         private _instructionsButtonClick(event: createjs.MouseEvent) {
+            createjs.Sound.play("select");
             // Switch to the PLAY Scene
             scene = config.Scene.INSTRUCTIONS;
             changeScene();
@@ -89,6 +90,7 @@ module scenes {
 
         // START Button click event handler
         private _startButtonClick(event: createjs.MouseEvent) {
+            createjs.Sound.play("select");
             // Switch to the PLAY Scene
             scene = config.Scene.LEVEL1;
             changeScene();
@@ -96,6 +98,7 @@ module scenes {
 
         // EXIT Button click event handler
         private _exitButtonClick(event: createjs.MouseEvent) {
+            createjs.Sound.play("select");
             // Switch to the END Scene
             scene = config.Scene.END;
             changeScene();

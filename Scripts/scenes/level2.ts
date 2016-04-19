@@ -16,6 +16,8 @@ module scenes {
         private _spikeCount: number;
 
         private _plasma: objects.Projectile;
+        
+        private _component: objects.Component;
 
         //player- - - - - - - - - - - - - - - - - -
         private _player: objects.Player;
@@ -49,7 +51,7 @@ module scenes {
             lives += 5;
 
             // Set Enemy Count
-            this._batarangCount = 5;
+            this._batarangCount = 3;
             this._spikeCount = 3;
 
             // Instantiate Enemy array
@@ -79,12 +81,15 @@ module scenes {
                 this.addChild(this._spikes[i]);
                 this._spikeCollision[i] = new managers.EnemyCollision(this._spikes[i]);
             }
+            
+            this._component = new objects.Component();
+            this.addChild(this._component);
 
             this._plasma = new objects.Projectile(.5);
             this.addChild(this._plasma);
 
             // add labels to scene
-            this._scoreLabel = new objects.Label("Score: " + score + " m",
+            this._scoreLabel = new objects.Label("Components: " + score,
                 "35px Consolas",
                 "#FFFFFF",
                 50,
@@ -109,12 +114,7 @@ module scenes {
         // PLAY Scene updates here
         public update(): void {
             this._background1.update();
-            //this._background2.update();
-
             this._player.update();
-
-            score++;
-            this._scoreLabel.text = "Score: " + score + " m";
 
             // check for collisions
             //batarangs
@@ -122,10 +122,9 @@ module scenes {
                 if (this._collision.check(this._batarangs[i])) { //colliding with player avatar
                     this._batarangs[i].isHittingPlayer = true;
                     lives--;
-                    this._livesLabel.text = "Lives: " + lives;
+                    createjs.Sound.play("grunt");
                     console.log("you've been hit by a batarang...that's gonna leave a mark!");
                 } else {
-
                     for (var j = 0; j < this._batarangCount; j++) {
                         if (j != i && this._enemyCollision[j].check(this._batarangs[i])) {
                             this._batarangs[i].isHittingBat = true;
@@ -136,15 +135,14 @@ module scenes {
                 this._batarangs[i].isHittingBat = false;
                 this._batarangs[i].isHittingPlayer = false;
             }//for batarangs
-
-
-
+            
             //spikes           
             for (var i = 0; i < this._spikeCount; i++) { //check all
                 if (this._collision.check(this._spikes[i])) { //colliding with player avatar
                     this._spikes[i].isHittingPlayer = true;
                     this._spikes[i].isColliding = true;
                     lives--;
+                    createjs.Sound.play("grunt");
                     this._livesLabel.text = "Lives: " + lives;
                     console.log("ouch! you've been spiked!");
                 } else {
@@ -161,6 +159,17 @@ module scenes {
                 this._spikes[i].isHittingPlayer = false;
                 this._spikes[i].projectileHit = false;
             }//for spikes
+            
+            //component
+            if (this._collision.check(this._component)) {
+                this._component.isCollision = true;
+                score++;
+                createjs.Sound.play("powerup");
+            }
+            this._component.update();
+            
+            this._scoreLabel.text = "Components: " + score;
+            this._livesLabel.text = "Lives: " + lives;
 
             //plasma blasts
             this._plasma.update();
@@ -169,9 +178,9 @@ module scenes {
                 console.log("player ran out of lives");
                 scene = config.Scene.END;
                 changeScene();
-            } else if (score >= 1000) {
+            } else if (score >= 10) {
                 console.log("transfer to level 3");
-                scene = config.Scene.LEVEL3;
+                scene = config.Scene.LEVEL23;
                 changeScene();
             }
         }
@@ -183,6 +192,7 @@ module scenes {
             if (!this._plasma._fired) {
                 this._plasma.fire(this._player.x, this._player.y);
                 fired = true;
+                createjs.Sound.play("plasma");
             }
         }
     }

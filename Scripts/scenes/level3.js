@@ -27,7 +27,7 @@ var scenes;
             this._batarangs = new Array(this._batarangCount);
             this._enemyCollision = new Array(this._batarangCount);
             // add world to the scene
-            this._background1 = new objects.World("L2_Platform");
+            this._background1 = new objects.World("Gotham");
             this.addChild(this._background1);
             // add player to the scene
             this._player = new objects.Player();
@@ -101,6 +101,7 @@ var scenes;
             if (!this._plasma._fired) {
                 this._plasma.fire(this._player.x, this._player.y);
                 fired = true;
+                createjs.Sound.play("plasma");
             }
         };
         return Level3;

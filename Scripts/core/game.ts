@@ -12,12 +12,15 @@ var scene: number;
 var score: number;
 var lives: number;
 
+var bgm: createjs.AbstractSoundInstance;
+
 // Game Scenes
 var menu: scenes.Menu;
 var instructions: scenes.Instructions;
 var level1: scenes.Level1;
 var level12: scenes.Level12;
 var level2: scenes.Level2;
+var level23: scenes.Level23;
 var level3: scenes.Level3;
 var end: scenes.End;
 
@@ -26,7 +29,7 @@ var end: scenes.End;
 
 var assetData: objects.Asset[] = [
     // Add your Assets here
-    { id: "battery", src: "../../Assets/images/battery.png" },
+    { id: "component", src: "../../Assets/images/Component30x30.png" },
     { id: "EnemyBatman", src: "../../Assets/images/EnemyBatman.png" },
     { id: "EnemyCat", src: "../../Assets/images/EnemyCat.png" },
     { id: "hood", src: "../../Assets/images/EnemyBatman.png" },
@@ -39,8 +42,15 @@ var assetData: objects.Asset[] = [
     { id: "quitButton", src: "../../Assets/images/quitButton.png" },
     { id: "L1_Platform", src: "../../Assets/images/WorldPlatform2.png" },
     { id: "L2_Platform", src: "../../Assets/images/PlatformL2.png" },
+    { id: "Gotham", src: "../../Assets/images/Gotham.png" },
     { id: "InstructionsBackground", src: "../../Assets/images/InstructionsScreen.png" },
-    { id: "Batwing", src: "../../Assets/images/batwing50.png" }
+    { id: "Batwing", src: "../../Assets/images/batwing50.png" },
+    { id: "backgroundMusic", src: "../../Assets/audio/NormalLevel_Alt.mp3" },
+    { id: "bossMusic", src: "../../Assets/audio/FinalBattle.mp3" },
+    { id: "grunt", src: "../../Assets/audio/DamageGrunt.wav" },
+    { id: "select", src: "../../Assets/audio/Blip_Select12.wav" },
+    { id: "plasma", src: "../../Assets/audio/PlasmaFire.wav" },
+    { id: "powerup", src: "../../Assets/audio/Powerup10.wav" }
 ];
 
 function preload() {
@@ -70,11 +80,11 @@ function init(): void {
     setupStats();
 
     // set initial scene
-    scene = config.Scene.LEVEL3;
+    scene = config.Scene.MENU;
     changeScene();
 
-    // play background music (infinite loop)
-    // createjs.Sound.play("bgm", { loop: -1 });
+    // play background music (infinite loop)    
+    bgm = createjs.Sound.play("backgroundMusic", { loop: -1 });
 }
 
 // Main Game Loop function that handles what happens each "tick" or frame
@@ -141,6 +151,13 @@ function changeScene(): void {
             level2 = new scenes.Level2();
             currentScene = level2;
             console.log("Starting LEVEL 2 Scene");
+            break;
+            case config.Scene.LEVEL23:
+            // show the PLAY scene
+            stage.removeAllChildren();
+            level23 = new scenes.Level23();
+            currentScene = level12;
+            console.log("Starting LEVEL 2.5 Scene");
             break;
         case config.Scene.LEVEL3:
             // show the PLAY scene

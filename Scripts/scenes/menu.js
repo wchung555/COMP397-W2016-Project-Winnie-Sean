@@ -56,18 +56,21 @@ var scenes;
         //EVENT HANDLERS ++++++++++++++++++++
         // INSTRUCTIONS Button click event handler
         Menu.prototype._instructionsButtonClick = function (event) {
+            createjs.Sound.play("select");
             // Switch to the PLAY Scene
             scene = config.Scene.INSTRUCTIONS;
             changeScene();
         };
         // START Button click event handler
         Menu.prototype._startButtonClick = function (event) {
+            createjs.Sound.play("select");
             // Switch to the PLAY Scene
             scene = config.Scene.LEVEL1;
             changeScene();
         };
         // EXIT Button click event handler
         Menu.prototype._exitButtonClick = function (event) {
+            createjs.Sound.play("select");
             // Switch to the END Scene
             scene = config.Scene.END;
             changeScene();

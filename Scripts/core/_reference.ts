@@ -14,6 +14,7 @@
 /// <reference path="../objects/spikes.ts" />
 /// <reference path="../objects/projectile.ts" />
 /// <reference path="../objects/batarang.ts" />
+/// <reference path="../objects/component.ts" />
 /// <reference path="../objects/boss.ts" />
 
 /// <reference path="../managers/collision.ts" />
@@ -24,6 +25,7 @@
 /// <reference path="../scenes/level1.ts" />
 /// <reference path="../scenes/level1-2.ts" />
 /// <reference path="../scenes/level2.ts" />
+/// <reference path="../scenes/level2-3.ts" />
 /// <reference path="../scenes/level3.ts" />
 /// <reference path="../scenes/instructions.ts" />
 /// <reference path="../scenes/menu.ts" />

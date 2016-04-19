@@ -3,26 +3,28 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-// LEVEL 1.5 SCENE
+// LEVEL 2.5 SCENE
 var scenes;
 (function (scenes) {
-    var Level12 = (function (_super) {
-        __extends(Level12, _super);
+    var Level23 = (function (_super) {
+        __extends(Level23, _super);
         // CONSTRUCTOR ++++++++++++++++++++++
-        function Level12() {
+        function Level23() {
             _super.call(this);
         }
         // PUBLIC METHODS +++++++++++++++++++++
         // Start Method
-        Level12.prototype.start = function () {
+        Level23.prototype.start = function () {
+            bgm.stop();
+            bgm = createjs.Sound.play("bossMusic", { loop: -1 });
             // add world to the scene
-            this._background1 = new objects.World("L2_Platform");
+            this._background1 = new objects.World("Gotham");
             this.addChild(this._background1);
             // add player to the scene
             this._player = new objects.Player();
             this.addChild(this._player);
             // add label, start button to scene
-            this._sceneLabel = new objects.Label("Level 2", "60px Consolas", "#FFFFFF", config.Screen.CENTER_X, config.Screen.CENTER_Y, false);
+            this._sceneLabel = new objects.Label("Level 3", "60px Consolas", "#FFFFFF", config.Screen.CENTER_X, config.Screen.CENTER_Y, false);
             this._sceneLabel.regX = this._sceneLabel.getBounds().width * 0.5;
             this._sceneLabel.regY = this._sceneLabel.getBounds().height * 0.5;
             this.addChild(this._sceneLabel);
@@ -35,19 +37,19 @@ var scenes;
             stage.addChild(this);
         };
         // PLAY Scene updates here
-        Level12.prototype.update = function () {
+        Level23.prototype.update = function () {
             this._background1.update();
         };
         //EVENT HANDLERS ++++++++++++++++++++
         // START Button click event handler
-        Level12.prototype._startButtonClick = function (event) {
+        Level23.prototype._startButtonClick = function (event) {
             createjs.Sound.play("select");
-            // Switch to the LEVEL2 Scene
-            scene = config.Scene.LEVEL2;
+            // Switch to the LEVEL3 Scene
+            scene = config.Scene.LEVEL3;
             changeScene();
         };
-        return Level12;
+        return Level23;
     })(objects.Scene);
-    scenes.Level12 = Level12;
+    scenes.Level23 = Level23;
 })(scenes || (scenes = {}));
-//# sourceMappingURL=level1-2.js.map
+//# sourceMappingURL=level2-3.js.map

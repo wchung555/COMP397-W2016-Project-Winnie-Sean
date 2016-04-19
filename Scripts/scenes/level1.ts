@@ -93,6 +93,7 @@ module scenes {
                 if (this._collision.check(this._batarangs[i])) { //colliding with player avatar
                     this._batarangs[i].isHittingPlayer = true;
                     lives--;
+                    createjs.Sound.play("grunt");
                     this._livesLabel.text = "Lives: " + lives;
                 } else {
                     for (var j = 0; j < this._batarangCount; j++) {

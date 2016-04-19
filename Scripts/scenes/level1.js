@@ -62,6 +62,7 @@ var scenes;
                 if (this._collision.check(this._batarangs[i])) {
                     this._batarangs[i].isHittingPlayer = true;
                     lives--;
+                    createjs.Sound.play("grunt");
                     this._livesLabel.text = "Lives: " + lives;
                 }
                 else {

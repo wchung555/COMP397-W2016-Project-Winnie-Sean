@@ -2,7 +2,7 @@
 module scenes {
     export class End extends objects.Scene {
         //PRIVATE INSTANCE VARIABLES ++++++++++++
-        private _endBackground: createjs.Bitmap;
+        private _endBackground: objects.World;
         private _restartButton: objects.Button;
         private _scoreLabel: objects.Label;
 
@@ -16,23 +16,25 @@ module scenes {
         // Start Method
         public start(): void {
             //Add Background
-            this._endBackground = new createjs.Bitmap(assets.getResult("EndBackground"));
+            this._endBackground = new objects.World('L2_Platform');
             this.addChild(this._endBackground);
 
             // add score label
-            this._scoreLabel = new objects.Label("Score: " + score,
-                "35px Consolas",
+            this._scoreLabel = new objects.Label("Game Over",
+                "60px Consolas",
                 "#FFFFFF",
-                config.Screen.CENTER_X + 20,
-                150,
+                config.Screen.CENTER_X,
+                config.Screen.CENTER_Y - 50,
                 true);
+            this._scoreLabel.regX = this._scoreLabel.getBounds().width * .5;
+            this._scoreLabel.regY = this._scoreLabel.getBounds().height * .5;
             this.addChild(this._scoreLabel);
 
             // add the RESET button to the PLAY scene
             this._restartButton = new objects.Button(
-                "RestartButton",
-                config.Screen.CENTER_X - 40,
-                config.Screen.CENTER_Y - 30, true);
+                "playButton",
+                config.Screen.CENTER_X,
+                config.Screen.CENTER_Y + 50, false);
             this.addChild(this._restartButton);
 
             // START_OVER Button event listener
@@ -45,7 +47,7 @@ module scenes {
 
         // PLAY Scene updates here
         public update(): void {
-
+            this._endBackground.update();
         }
 
 
@@ -53,8 +55,9 @@ module scenes {
 
         // RESET Button click event handler
         private _restartButtonClick(event: createjs.MouseEvent) {
+            createjs.Sound.play("select");
             // Switch to the MENU Scene
-            scene = config.Scene.MENU;
+            scene = config.Scene.LEVEL1;
             changeScene();
         }
     }

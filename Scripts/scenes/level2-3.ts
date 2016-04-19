@@ -1,6 +1,6 @@
-// LEVEL 1.5 SCENE
+// LEVEL 2.5 SCENE
 module scenes {
-    export class Level12 extends objects.Scene {
+    export class Level23 extends objects.Scene {
         //PRIVATE INSTANCE VARIABLES ++++++++++++
         private _sceneLabel: objects.Label;
         private _startButton: objects.Button;
@@ -21,8 +21,11 @@ module scenes {
 
         // Start Method
         public start(): void {
+            bgm.stop();
+            bgm = createjs.Sound.play("bossMusic", {loop:-1});
+            
             // add world to the scene
-            this._background1 = new objects.World("L2_Platform");
+            this._background1 = new objects.World("Gotham");
             this.addChild(this._background1);
 
             // add player to the scene
@@ -31,7 +34,7 @@ module scenes {
 
             // add label, start button to scene
             this._sceneLabel = new objects.Label(
-                "Level 2",
+                "Level 3",
                 "60px Consolas",
                 "#FFFFFF",
                 config.Screen.CENTER_X,
@@ -62,8 +65,8 @@ module scenes {
         // START Button click event handler
         private _startButtonClick(event: createjs.MouseEvent) {
             createjs.Sound.play("select");
-            // Switch to the LEVEL2 Scene
-            scene = config.Scene.LEVEL2;
+            // Switch to the LEVEL3 Scene
+            scene = config.Scene.LEVEL3;
             changeScene();
         }
     }

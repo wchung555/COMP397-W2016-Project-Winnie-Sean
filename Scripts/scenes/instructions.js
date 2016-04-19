@@ -32,6 +32,7 @@ var scenes;
         //EVENT HANDLERS ++++++++++++++++++++
         // START Button click event handler
         Instructions.prototype._startButtonClick = function (event) {
+            createjs.Sound.play("select");
             // Switch to the PLAY Scene
             scene = config.Scene.LEVEL1;
             changeScene();

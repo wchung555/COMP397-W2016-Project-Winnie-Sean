@@ -43,6 +43,7 @@ module scenes {
         
         // START Button click event handler
         private _startButtonClick(event: createjs.MouseEvent) {
+            createjs.Sound.play("select");
             // Switch to the PLAY Scene
             scene = config.Scene.LEVEL1;
             changeScene();
