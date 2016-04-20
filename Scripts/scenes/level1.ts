@@ -12,6 +12,8 @@ module scenes {
         private _scoreLabel: objects.Label;
         //private _lives: number;
         private _livesLabel: objects.Label;
+        
+        private _exitButton: objects.Button;
 
         // CONSTRUCTOR ++++++++++++++++++++++
         constructor() {
@@ -74,6 +76,16 @@ module scenes {
             // add collision manager to the scene
             this._collision = new managers.Collision(this._player);
 
+
+             // add the Exit button to the MENU scene
+            this._exitButton = new objects.Button(
+                "quitButton", 55, 220, false);
+            this.addChild(this._exitButton);
+
+            // Exit Button event listener
+            this._exitButton.on("click", this._exitButtonClick, this);
+            
+            
             // add this scene to the global stage container
             stage.addChild(this);
         }
@@ -123,6 +135,7 @@ module scenes {
         //EVENT HANDLERS ++++++++++++++++++++
         // EXIT Button click event handler
         private _exitButtonClick(event: createjs.MouseEvent) {
+            createjs.Sound.play("select");
             // Switch to the END Scene
             scene = config.Scene.END;
             changeScene();

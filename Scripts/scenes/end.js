@@ -3,7 +3,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-// END SCENE
+// INSTRUCTIONS SCENE
 var scenes;
 (function (scenes) {
     var End = (function (_super) {
@@ -12,35 +12,41 @@ var scenes;
         function End() {
             _super.call(this);
         }
-        // PUBLIC METHODS ++++++++++++++++++++
+        // PUBLIC METHODS +++++++++++++++++++++
         // Start Method
         End.prototype.start = function () {
-            //Add Background
-            this._endBackground = new objects.World('L2_Platform');
-            this.addChild(this._endBackground);
-            // add score label
-            this._scoreLabel = new objects.Label("Game Over", "60px Consolas", "#FFFFFF", config.Screen.CENTER_X, config.Screen.CENTER_Y - 50, true);
-            this._scoreLabel.regX = this._scoreLabel.getBounds().width * .5;
-            this._scoreLabel.regY = this._scoreLabel.getBounds().height * .5;
-            this.addChild(this._scoreLabel);
-            // add the RESET button to the PLAY scene
-            this._restartButton = new objects.Button("playButton", config.Screen.CENTER_X, config.Screen.CENTER_Y + 50, false);
-            this.addChild(this._restartButton);
-            // START_OVER Button event listener
-            this._restartButton.on("click", this._restartButtonClick, this);
+            //Add background
+            this._background = new createjs.Bitmap(assets.getResult("Pre1"));
+            this.addChild(this._background);
+            // add the Start button to the INSTRUCTIONS scene
+            this._startButton = new objects.Button("playButton", 512, 220, false);
+            this.addChild(this._startButton);
+            // Start Button event listener
+            this._startButton.on("click", this._startButtonClick, this);
+            // add the Exit button to the MENU scene
+            this._exitButton = new objects.Button("quitButton", 55, 220, false);
+            this.addChild(this._exitButton);
+            // Exit Button event listener
+            this._exitButton.on("click", this._exitButtonClick, this);
             // add this scene to the global stage container
             stage.addChild(this);
         };
-        // PLAY Scene updates here
+        // INTRO Scene updates here
         End.prototype.update = function () {
-            this._endBackground.update();
         };
         //EVENT HANDLERS ++++++++++++++++++++
-        // RESET Button click event handler
-        End.prototype._restartButtonClick = function (event) {
+        // START Button click event handler
+        End.prototype._startButtonClick = function (event) {
             createjs.Sound.play("select");
-            // Switch to the MENU Scene
-            scene = config.Scene.LEVEL1;
+            // Switch to the PLAY Scene
+            scene = config.Scene.MENU;
+            changeScene();
+        };
+        // EXIT Button click event handler
+        End.prototype._exitButtonClick = function (event) {
+            createjs.Sound.play("select");
+            // Switch to the END Scene
+            scene = config.Scene.END;
             changeScene();
         };
         return End;

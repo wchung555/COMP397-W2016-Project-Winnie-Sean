@@ -13,6 +13,7 @@ var firstRun;
 // Game Scenes
 var menu;
 var instructions;
+var level01;
 var level1;
 var level12;
 var level2;
@@ -28,14 +29,16 @@ var assetData = [
     { id: "batarang", src: "../../Assets/images/Batarang.png" },
     { id: "spikes", src: "../../Assets/images/spikes.png" },
     { id: "projectile", src: "../../Assets/images/projectile.png" },
-    { id: "instructionButton", src: "../../Assets/images/instructionButton.png" },
-    { id: "playButton", src: "../../Assets/images/playButton.png" },
     { id: "Player", src: "../../Assets/images/hood.png" },
-    { id: "quitButton", src: "../../Assets/images/quitButton.png" },
     { id: "L1_Platform", src: "../../Assets/images/WorldPlatform2.png" },
     { id: "L2_Platform", src: "../../Assets/images/PlatformL2.png" },
     { id: "Gotham", src: "../../Assets/images/Gotham.png" },
     { id: "Batwing", src: "../../Assets/images/batwing40.png" },
+    //Buttons--------------------------------------------------
+    { id: "instructionButton", src: "../../Assets/images/instructionButton.png" },
+    { id: "playButton", src: "../../Assets/images/playButton.png" },
+    { id: "quitButton", src: "../../Assets/images/quitButton.png" },
+    { id: "menuButton", src: "../../Assets/images/menuButton.png" },
     //Sounds-------------------------------------------------
     { id: "backgroundMusic", src: "../../Assets/audio/NormalLevel_Alt.mp3" },
     { id: "bossMusic", src: "../../Assets/audio/FinalBattle.mp3" },
@@ -45,7 +48,11 @@ var assetData = [
     { id: "powerup", src: "../../Assets/audio/Powerup10.wav" },
     //Intermediate screens-----------------------------------
     { id: "InstructionsBackground", src: "../../Assets/images/InstructionScreen-fitted.png" },
-    { id: "Pre1", src: "../../Assets/images/Level01.png" }
+    { id: "Pre1", src: "../../Assets/images/Level0-1.png" },
+    { id: "Pre2", src: "../../Assets/images/Level1-2.png" },
+    { id: "Pre3", src: "../../Assets/images/Level2-3.png" },
+    { id: "gameOver", src: "../../Assets/images/GameOver.png" },
+    { id: "Title", src: "../../Assets/images/Title.png" }
 ];
 function preload() {
     assets = new createjs.LoadQueue();

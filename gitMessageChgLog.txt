@@ -1,3 +1,4 @@
-Added intermediate scene, configured instructions:  
-- Added Level0-1
-- Changed path to inject level 0-1
+Configured other intermediate scenes: 
+- Added End scene
+- New Menu scene.  
+- New Assets
