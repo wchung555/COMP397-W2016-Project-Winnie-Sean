@@ -15,6 +15,8 @@ var scenes;
         // PUBLIC METHODS +++++++++++++++++++++
         // Start Method
         Level01.prototype.start = function () {
+            //Game Music            
+            bgm = createjs.Sound.play("backgroundMusic", { loop: -1 });
             //Add background
             this._background = new createjs.Bitmap(assets.getResult("Pre1"));
             this.addChild(this._background);
@@ -47,6 +49,7 @@ var scenes;
             createjs.Sound.play("select");
             // Switch to the END Scene
             scene = config.Scene.END;
+            bgm.stop();
             changeScene();
         };
         return Level01;

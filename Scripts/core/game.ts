@@ -52,6 +52,8 @@ var assetData: objects.Asset[] = [
     
     //Sounds-------------------------------------------------
     { id: "backgroundMusic", src: "../../Assets/audio/NormalLevel_Alt.mp3" },
+    { id: "idleSound", src: "../../Assets/audio/idleScreen.ogg" },
+    { id: "endScreenSound", src: "../../Assets/audio/idleScreen_aiff.ogg" },
     { id: "bossMusic", src: "../../Assets/audio/FinalBattle.mp3" },
     { id: "grunt", src: "../../Assets/audio/DamageGrunt.wav" },
     { id: "select", src: "../../Assets/audio/Blip_Select12.wav" },
@@ -100,7 +102,7 @@ function init(): void {
     changeScene();
 
     // play background music (infinite loop)    
-    bgm = createjs.Sound.play("backgroundMusic", { loop: -1 });
+    bgm = createjs.Sound.play("idleSound", { loop: -1 });
     
     //register initialization
     firstRun = true;

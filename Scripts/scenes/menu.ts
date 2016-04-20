@@ -23,6 +23,10 @@ module scenes {
         
         // Start Method
         public start(): void {
+            //sound
+            bgm = createjs.Sound.play("idleSound", { loop: -1 });
+            firstRun = false;
+            
             //Add background
             this._background = new createjs.Bitmap(assets.getResult("Title"));
             this.addChild(this._background);            

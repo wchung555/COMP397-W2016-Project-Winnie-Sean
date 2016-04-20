@@ -15,6 +15,10 @@ module scenes {
         
         // Start Method
         public start(): void {
+            
+            //Game Music            
+            bgm = createjs.Sound.play("backgroundMusic", { loop: -1 });
+            
             //Add background
             this._background = new createjs.Bitmap(assets.getResult("Pre1"));
             this.addChild(this._background);            
@@ -60,6 +64,7 @@ module scenes {
             createjs.Sound.play("select");
             // Switch to the END Scene
             scene = config.Scene.END;
+            bgm.stop();
             changeScene();
         }
 

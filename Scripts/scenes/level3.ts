@@ -134,6 +134,7 @@ module scenes {
             if (lives <= 0) {
                 console.log("player ran out of lives");
                 scene = config.Scene.END;
+                bgm.stop();
                 changeScene();
             } else if (this._boss.checkHealth() <= 0) {
                 console.log("transfer to WIN scene");

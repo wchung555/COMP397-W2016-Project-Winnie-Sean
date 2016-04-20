@@ -1,4 +1,6 @@
-Configured other intermediate scenes: 
-- Added End scene
+Configured other intermediate scenes; changed game music: 
+- Changed End scene
 - New Menu scene.  
 - New Assets
+- new menu sound.
+- new end scene sound.

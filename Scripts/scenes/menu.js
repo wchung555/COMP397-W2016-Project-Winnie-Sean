@@ -15,6 +15,9 @@ var scenes;
         // PUBLIC METHODS +++++++++++++++++++++
         // Start Method
         Menu.prototype.start = function () {
+            //sound
+            bgm = createjs.Sound.play("idleSound", { loop: -1 });
+            firstRun = false;
             //Add background
             this._background = new createjs.Bitmap(assets.getResult("Title"));
             this.addChild(this._background);
