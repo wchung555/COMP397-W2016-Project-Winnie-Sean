@@ -29,7 +29,8 @@ var managers;
             return isCollision;
         };
         return EnemyCollision;
-    })();
+    }());
     managers.EnemyCollision = EnemyCollision;
 })(managers || (managers = {}));
+
 //# sourceMappingURL=enemycollision.js.map

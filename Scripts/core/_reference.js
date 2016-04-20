@@ -16,6 +16,7 @@
 /// <reference path="../managers/enemycollision.ts" />
 /// <reference path="../managers/plasmaCollision.ts" />
 /// <reference path="../scenes/end.ts" />
+/// <reference path="../scenes/level0-1.ts" />
 /// <reference path="../scenes/level1.ts" />
 /// <reference path="../scenes/level1-2.ts" />
 /// <reference path="../scenes/level2.ts" />
@@ -23,4 +24,5 @@
 /// <reference path="../scenes/level3.ts" />
 /// <reference path="../scenes/instructions.ts" />
 /// <reference path="../scenes/menu.ts" /> 
+
 //# sourceMappingURL=_reference.js.map

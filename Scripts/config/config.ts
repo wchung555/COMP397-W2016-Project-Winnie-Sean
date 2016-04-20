@@ -4,13 +4,14 @@
     export class Scene {
         public static MENU: number = 0;
         public static INSTRUCTIONS: number = 1;
-        public static LEVEL1: number = 2;
-        public static LEVEL12: number = 3;
-        public static LEVEL2: number = 4;
-        public static LEVEL23: number = 5;
-        public static LEVEL3: number = 6;
-        public static WIN: number = 7;
-        public static END: number = 8;
+        public static LEVEL01: number =2;
+        public static LEVEL1: number = 3;
+        public static LEVEL12: number = 4;
+        public static LEVEL2: number = 5;
+        public static LEVEL23: number = 6;
+        public static LEVEL3: number = 7;
+        public static WIN: number = 8;
+        public static END: number = 9;
     }
     
     

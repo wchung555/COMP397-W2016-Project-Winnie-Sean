@@ -26,7 +26,7 @@ var scenes;
             this._player = new objects.Player();
             this.addChild(this._player);
             //Add Menu Label
-            this._menuLabel = new objects.Label("Rad Randal", "60px Consolas", "#FFFFFF", config.Screen.CENTER_X, config.Screen.CENTER_Y, false);
+            this._menuLabel = new objects.Label("Red Hood's Revenge", "60px Consolas", "#FFFFFF", config.Screen.CENTER_X, config.Screen.CENTER_Y, false);
             this._menuLabel.regX = this._menuLabel.getBounds().width * 0.5;
             this._menuLabel.regY = this._menuLabel.getBounds().height * 0.5;
             this.addChild(this._menuLabel);
@@ -65,7 +65,7 @@ var scenes;
         Menu.prototype._startButtonClick = function (event) {
             createjs.Sound.play("select");
             // Switch to the PLAY Scene
-            scene = config.Scene.LEVEL1;
+            scene = config.Scene.LEVEL01;
             changeScene();
         };
         // EXIT Button click event handler
@@ -76,7 +76,8 @@ var scenes;
             changeScene();
         };
         return Menu;
-    })(objects.Scene);
+    }(objects.Scene));
     scenes.Menu = Menu;
 })(scenes || (scenes = {}));
+
 //# sourceMappingURL=menu.js.map

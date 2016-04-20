@@ -1,8 +1,8 @@
-﻿// INSTRUCTIONS SCENE
+// INSTRUCTIONS SCENE
 module scenes {
-    export class Instructions extends objects.Scene {
+    export class Level01 extends objects.Scene {
         //PRIVATE INSTANCE VARIABLES ++++++++++++
-        private _instructionsBackground: createjs.Bitmap;
+        private _background: createjs.Bitmap;
         private _startButton: objects.Button;
         private _exitButton: objects.Button;
         
@@ -16,8 +16,8 @@ module scenes {
         // Start Method
         public start(): void {
             //Add background
-            this._instructionsBackground = new createjs.Bitmap(assets.getResult("InstructionsBackground"));
-            this.addChild(this._instructionsBackground);            
+            this._background = new createjs.Bitmap(assets.getResult("Pre1"));
+            this.addChild(this._background);            
             
             // add the Start button to the INSTRUCTIONS scene
             this._startButton = new objects.Button(
@@ -51,7 +51,7 @@ module scenes {
         private _startButtonClick(event: createjs.MouseEvent) {
             createjs.Sound.play("select");
             // Switch to the PLAY Scene
-            scene = config.Scene.LEVEL01;
+            scene = config.Scene.LEVEL1;
             changeScene();
         }
         

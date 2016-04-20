@@ -6,18 +6,18 @@ var __extends = (this && this.__extends) || function (d, b) {
 // INSTRUCTIONS SCENE
 var scenes;
 (function (scenes) {
-    var Instructions = (function (_super) {
-        __extends(Instructions, _super);
+    var Level01 = (function (_super) {
+        __extends(Level01, _super);
         // CONSTRUCTOR ++++++++++++++++++++++
-        function Instructions() {
+        function Level01() {
             _super.call(this);
         }
         // PUBLIC METHODS +++++++++++++++++++++
         // Start Method
-        Instructions.prototype.start = function () {
+        Level01.prototype.start = function () {
             //Add background
-            this._instructionsBackground = new createjs.Bitmap(assets.getResult("InstructionsBackground"));
-            this.addChild(this._instructionsBackground);
+            this._background = new createjs.Bitmap(assets.getResult("Pre1"));
+            this.addChild(this._background);
             // add the Start button to the INSTRUCTIONS scene
             this._startButton = new objects.Button("playButton", 512, 220, false);
             this.addChild(this._startButton);
@@ -32,26 +32,26 @@ var scenes;
             stage.addChild(this);
         };
         // INTRO Scene updates here
-        Instructions.prototype.update = function () {
+        Level01.prototype.update = function () {
         };
         //EVENT HANDLERS ++++++++++++++++++++
         // START Button click event handler
-        Instructions.prototype._startButtonClick = function (event) {
+        Level01.prototype._startButtonClick = function (event) {
             createjs.Sound.play("select");
             // Switch to the PLAY Scene
-            scene = config.Scene.LEVEL01;
+            scene = config.Scene.LEVEL1;
             changeScene();
         };
         // EXIT Button click event handler
-        Instructions.prototype._exitButtonClick = function (event) {
+        Level01.prototype._exitButtonClick = function (event) {
             createjs.Sound.play("select");
             // Switch to the END Scene
             scene = config.Scene.END;
             changeScene();
         };
-        return Instructions;
+        return Level01;
     }(objects.Scene));
-    scenes.Instructions = Instructions;
+    scenes.Level01 = Level01;
 })(scenes || (scenes = {}));
 
-//# sourceMappingURL=instructions.js.map
+//# sourceMappingURL=level0-1.js.map

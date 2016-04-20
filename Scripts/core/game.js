@@ -9,6 +9,7 @@ var scene;
 var score;
 var lives;
 var bgm;
+var firstRun;
 // Game Scenes
 var menu;
 var instructions;
@@ -34,14 +35,17 @@ var assetData = [
     { id: "L1_Platform", src: "../../Assets/images/WorldPlatform2.png" },
     { id: "L2_Platform", src: "../../Assets/images/PlatformL2.png" },
     { id: "Gotham", src: "../../Assets/images/Gotham.png" },
-    { id: "InstructionsBackground", src: "../../Assets/images/InstructionsScreen.png" },
-    { id: "Batwing", src: "../../Assets/images/batwing50.png" },
+    { id: "Batwing", src: "../../Assets/images/batwing40.png" },
+    //Sounds-------------------------------------------------
     { id: "backgroundMusic", src: "../../Assets/audio/NormalLevel_Alt.mp3" },
     { id: "bossMusic", src: "../../Assets/audio/FinalBattle.mp3" },
     { id: "grunt", src: "../../Assets/audio/DamageGrunt.wav" },
     { id: "select", src: "../../Assets/audio/Blip_Select12.wav" },
     { id: "plasma", src: "../../Assets/audio/PlasmaFire.wav" },
-    { id: "powerup", src: "../../Assets/audio/Powerup10.wav" }
+    { id: "powerup", src: "../../Assets/audio/Powerup10.wav" },
+    //Intermediate screens-----------------------------------
+    { id: "InstructionsBackground", src: "../../Assets/images/InstructionScreen-fitted.png" },
+    { id: "Pre1", src: "../../Assets/images/Level01.png" }
 ];
 function preload() {
     assets = new createjs.LoadQueue();
@@ -67,6 +71,8 @@ function init() {
     changeScene();
     // play background music (infinite loop)    
     bgm = createjs.Sound.play("backgroundMusic", { loop: -1 });
+    //register initialization
+    firstRun = true;
 }
 // Main Game Loop function that handles what happens each "tick" or frame
 function gameLoop(event) {
@@ -100,11 +106,18 @@ function changeScene() {
             console.log("Starting MENU Scene");
             break;
         case config.Scene.INSTRUCTIONS:
-            // show the PLAY scene
+            // show the Instructions scene
             stage.removeAllChildren();
             instructions = new scenes.Instructions();
             currentScene = instructions;
             console.log("Starting INSTRUCTIONS Scene");
+            break;
+        case config.Scene.LEVEL01:
+            // show the PLAY scene
+            stage.removeAllChildren();
+            level01 = new scenes.Level01();
+            currentScene = level01;
+            console.log("Starting LEVEL 0.5 Scene");
             break;
         case config.Scene.LEVEL1:
             // show the PLAY scene
@@ -152,4 +165,5 @@ function changeScene() {
     console.log(currentScene.numChildren);
 }
 window.onload = preload;
+
 //# sourceMappingURL=game.js.map

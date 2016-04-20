@@ -33,7 +33,7 @@ module scenes {
 
             //Add Menu Label
             this._menuLabel = new objects.Label(
-                "Rad Randal",
+                "Red Hood's Revenge",
                 "60px Consolas",
                 "#FFFFFF",
                 config.Screen.CENTER_X,
@@ -92,7 +92,7 @@ module scenes {
         private _startButtonClick(event: createjs.MouseEvent) {
             createjs.Sound.play("select");
             // Switch to the PLAY Scene
-            scene = config.Scene.LEVEL1;
+            scene = config.Scene.LEVEL01;
             changeScene();
         }
 

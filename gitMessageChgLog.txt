@@ -1,9 +1,3 @@
-Added assets:  
-- Gotham for Level 3
-- added sounds:  
-	- grunt  
-	- select  
-	- plasma fire  
-	- powerup  
-	- normal level music  
-	- boss battle music  
+Added intermediate scene, configured instructions:  
+- Added Level0-1
+- Changed path to inject level 0-1
