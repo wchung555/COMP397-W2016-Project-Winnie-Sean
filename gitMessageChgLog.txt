@@ -1,3 +1,1 @@
--New small quit button for in-level quit.
--Added quit button to level 1
--Moved Level 1 labels closer to top of screen.
+Configured Level 1-2 page
