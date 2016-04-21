@@ -41,14 +41,14 @@ var scenes;
                 this._enemyCollision[i] = new managers.EnemyCollision(this._batarangs[i]);
             }
             // add labels to scene
-            this._scoreLabel = new objects.Label("Score: " + score + " m", "35px Consolas", "#FFFFFF", 50, 50, false);
+            this._scoreLabel = new objects.Label("Score: " + score + " m", "35px Consolas", "#FFFFFF", 120, 0, false);
             this.addChild(this._scoreLabel);
-            this._livesLabel = new objects.Label("Lives: " + lives, "35px Consolas", "#FFFFFF", config.Screen.WIDTH - 200, 50, false);
+            this._livesLabel = new objects.Label("Lives: " + lives, "35px Consolas", "#FFFFFF", config.Screen.WIDTH - 200, 0, false);
             this.addChild(this._livesLabel);
             // add collision manager to the scene
             this._collision = new managers.Collision(this._player);
             // add the Exit button to the MENU scene
-            this._exitButton = new objects.Button("quitButton", 55, 220, false);
+            this._exitButton = new objects.Button("quitButton_small", 5, 5, false);
             this.addChild(this._exitButton);
             // Exit Button event listener
             this._exitButton.on("click", this._exitButtonClick, this);

@@ -48,6 +48,7 @@ var assetData: objects.Asset[] = [
     { id: "instructionButton", src: "../../Assets/images/instructionButton.png" },
     { id: "playButton", src: "../../Assets/images/playButton.png" },
     { id: "quitButton", src: "../../Assets/images/quitButton.png" },
+    { id: "quitButton_small", src: "../../Assets/images/quitButton_small.png" },
     { id: "menuButton", src: "../../Assets/images/menuButton.png" },
     
     //Sounds-------------------------------------------------

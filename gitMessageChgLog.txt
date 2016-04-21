@@ -1,6 +1,3 @@
-Configured other intermediate scenes; changed game music: 
-- Changed End scene
-- New Menu scene.  
-- New Assets
-- new menu sound.
-- new end scene sound.
+-New small quit button for in-level quit.
+-Added quit button to level 1
+-Moved Level 1 labels closer to top of screen.

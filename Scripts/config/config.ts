@@ -18,7 +18,7 @@
     // Screen Constants
     export class Screen {
         public static WIDTH: number = 640;
-        public static HEIGHT: number = 420;
+        public static HEIGHT: number = 480;
         public static CENTER_X: number = 320;
         public static CENTER_Y: number = 210;
     }

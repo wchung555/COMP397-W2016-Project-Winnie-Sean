@@ -61,15 +61,15 @@ module scenes {
             this._scoreLabel = new objects.Label("Score: " + score + " m",
                 "35px Consolas",
                 "#FFFFFF",
-                50,
-                50,
+                120,
+                0,
                 false);
             this.addChild(this._scoreLabel);
             this._livesLabel = new objects.Label("Lives: " + lives,
                 "35px Consolas",
                 "#FFFFFF",
                 config.Screen.WIDTH - 200,
-                50,
+                0,
                 false);
             this.addChild(this._livesLabel);
 
@@ -79,7 +79,8 @@ module scenes {
 
              // add the Exit button to the MENU scene
             this._exitButton = new objects.Button(
-                "quitButton", 55, 220, false);
+                "quitButton_small", 5, 5, false);
+            
             this.addChild(this._exitButton);
 
             // Exit Button event listener
