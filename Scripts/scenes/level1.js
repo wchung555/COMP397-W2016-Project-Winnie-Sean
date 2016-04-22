@@ -41,9 +41,9 @@ var scenes;
                 this._enemyCollision[i] = new managers.EnemyCollision(this._batarangs[i]);
             }
             // add labels to scene
-            this._scoreLabel = new objects.Label("Score: " + score + " m", "35px Consolas", "#FFFFFF", 120, 0, false);
+            this._scoreLabel = new objects.Label("Score: " + score + " m", "35px Play", "#FFFFFF", 120, 0, false);
             this.addChild(this._scoreLabel);
-            this._livesLabel = new objects.Label("Lives: " + lives, "35px Consolas", "#FFFFFF", config.Screen.WIDTH - 200, 0, false);
+            this._livesLabel = new objects.Label("Lives: " + lives, "35px Play", "#FFFFFF", config.Screen.WIDTH - 200, 0, false);
             this.addChild(this._livesLabel);
             // add collision manager to the scene
             this._collision = new managers.Collision(this._player);
@@ -67,7 +67,7 @@ var scenes;
                 if (this._collision.check(this._batarangs[i])) {
                     this._batarangs[i].isHittingPlayer = true;
                     lives--;
-                    createjs.Sound.play("grunt");
+                    createjs.Sound.play("grunt", { volume: 0.75 });
                     this._livesLabel.text = "Lives: " + lives;
                 }
                 else {
@@ -84,7 +84,7 @@ var scenes;
             } //for check all batarangs
             if (lives <= 0) {
                 console.log("player ran out of lives");
-                scene = config.Scene.END; //testing
+                scene = config.Scene.GAMEOVER; //testing
                 changeScene();
             }
             else if (score >= 1000) {

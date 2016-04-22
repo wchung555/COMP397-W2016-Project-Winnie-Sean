@@ -18,10 +18,10 @@ module scenes {
             
             //Cut the music
             bgm.stop();
-            bgm = createjs.Sound.play("endScreenSound", { loop: -1 });
+            //bgm = createjs.Sound.play("idleSound", { loop: -1 });
             
             //Add background
-            this._background = new createjs.Bitmap(assets.getResult("gameOver"));
+            this._background = new createjs.Bitmap(assets.getResult("endScreen"));
             this.addChild(this._background);            
             
             // add the Start button to the INSTRUCTIONS scene

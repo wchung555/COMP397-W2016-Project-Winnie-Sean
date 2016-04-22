@@ -14,6 +14,7 @@ var config;
         Scene.LEVEL3 = 7;
         Scene.WIN = 8;
         Scene.END = 9;
+        Scene.GAMEOVER = 10;
         return Scene;
     }());
     config.Scene = Scene;

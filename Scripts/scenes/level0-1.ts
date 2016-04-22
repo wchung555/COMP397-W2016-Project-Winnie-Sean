@@ -16,8 +16,10 @@ module scenes {
         // Start Method
         public start(): void {
             
-            //Game Music            
-            bgm = createjs.Sound.play("backgroundMusic", { loop: -1 });
+            //Game Music 
+            bgm.stop();           
+            bgm = createjs.Sound.play("backgroundMusic", { loop: -1, volume: 0.25 });
+            console.log("backgroundMusic Volume at " + bgm.getVolume() );
             
             //Add background
             this._background = new createjs.Bitmap(assets.getResult("Pre1"));

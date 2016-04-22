@@ -59,14 +59,14 @@ module scenes {
 
             // add labels to scene
             this._scoreLabel = new objects.Label("Score: " + score + " m",
-                "35px Consolas",
+                "35px Play",
                 "#FFFFFF",
                 120,
                 0,
                 false);
             this.addChild(this._scoreLabel);
             this._livesLabel = new objects.Label("Lives: " + lives,
-                "35px Consolas",
+                "35px Play",
                 "#FFFFFF",
                 config.Screen.WIDTH - 200,
                 0,
@@ -106,7 +106,7 @@ module scenes {
                 if (this._collision.check(this._batarangs[i])) { //colliding with player avatar
                     this._batarangs[i].isHittingPlayer = true;
                     lives--;
-                    createjs.Sound.play("grunt");
+                    createjs.Sound.play("grunt", {volume: 0.75});
                     this._livesLabel.text = "Lives: " + lives;
                 } else {
                     for (var j = 0; j < this._batarangCount; j++) {
@@ -123,7 +123,7 @@ module scenes {
 
             if (lives <= 0) {
                 console.log("player ran out of lives");
-                scene = config.Scene.END; //testing
+                scene = config.Scene.GAMEOVER; //testing
                 changeScene();
             } else if (score >= 1000) {
                 console.log("transfer to level 2");

@@ -4,7 +4,7 @@ module scenes {
         //PRIVATE INSTANCE VARIABLES ++++++++++++
         private _instructionsBackground: createjs.Bitmap;
         private _startButton: objects.Button;
-        private _exitButton: objects.Button;
+        private _menuButton: objects.Button;
         
         // CONSTRUCTOR ++++++++++++++++++++++
         constructor() {
@@ -28,12 +28,12 @@ module scenes {
             this._startButton.on("click", this._startButtonClick, this);
             
              // add the Exit button to the MENU scene
-            this._exitButton = new objects.Button(
+            this._menuButton = new objects.Button(
                 "menuButton", 50, 220, false);
-            this.addChild(this._exitButton);
+            this.addChild(this._menuButton);
 
             // Exit Button event listener
-            this._exitButton.on("click", this._exitButtonClick, this);
+            this._menuButton.on("click", this._menuButtonClick, this);
             
             // add this scene to the global stage container
             stage.addChild(this);
@@ -57,7 +57,7 @@ module scenes {
         }
         
          // EXIT Button click event handler
-        private _exitButtonClick(event: createjs.MouseEvent) {
+        private _menuButtonClick(event: createjs.MouseEvent) {
             createjs.Sound.play("select");
             // Switch to the MENU Scene
             scene = config.Scene.MENU;

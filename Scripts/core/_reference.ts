@@ -30,3 +30,5 @@
 /// <reference path="../scenes/level3.ts" />
 /// <reference path="../scenes/instructions.ts" />
 /// <reference path="../scenes/menu.ts" />
+/// <reference path="../scenes/win.ts" />
+/// <reference path="../scenes/gameover.ts" />

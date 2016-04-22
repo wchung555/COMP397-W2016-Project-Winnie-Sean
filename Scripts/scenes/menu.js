@@ -17,6 +17,7 @@ var scenes;
         Menu.prototype.start = function () {
             //sound
             bgm = createjs.Sound.play("idleSound", { loop: -1 });
+            console.log("idleSound Volume at " + bgm.getVolume());
             firstRun = false;
             //Add background
             this._background = new createjs.Bitmap(assets.getResult("Title"));
@@ -46,7 +47,7 @@ var scenes;
         // INSTRUCTIONS Button click event handler
         Menu.prototype._instructionsButtonClick = function (event) {
             createjs.Sound.play("select");
-            // Switch to the PLAY Scene
+            // Switch to the INSTRUCTIONS Scene
             scene = config.Scene.INSTRUCTIONS;
             changeScene();
         };

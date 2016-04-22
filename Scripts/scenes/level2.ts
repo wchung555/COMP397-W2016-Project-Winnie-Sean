@@ -27,6 +27,7 @@ module scenes {
         private _spikeCollision: managers.EnemyCollision[];
         private _scoreLabel: objects.Label;
         private _livesLabel: objects.Label;
+        private _exitButton: objects.Button;
 
 
 
@@ -133,7 +134,7 @@ module scenes {
                 if (this._collision.check(this._batarangs[i])) { //colliding with player avatar
                     this._batarangs[i].isHittingPlayer = true;
                     lives--;
-                    createjs.Sound.play("grunt");
+                    createjs.Sound.play("grunt", {volume: 0.75});
                     console.log("you've been hit by a batarang...that's gonna leave a mark!");
                 } else {
                     for (var j = 0; j < this._batarangCount; j++) {
@@ -191,7 +192,7 @@ module scenes {
 
             if (lives <= 0) {
                 console.log("player ran out of lives");
-                scene = config.Scene.END;
+                scene = config.Scene.GAMEOVER;
                 changeScene();
             } else if (score >= 10) {
                 console.log("transfer to level 3");

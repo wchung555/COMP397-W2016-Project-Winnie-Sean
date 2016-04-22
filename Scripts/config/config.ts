@@ -12,6 +12,7 @@
         public static LEVEL3: number = 7;
         public static WIN: number = 8;
         public static END: number = 9;
+        public static GAMEOVER: number = 10;
     }
     
     

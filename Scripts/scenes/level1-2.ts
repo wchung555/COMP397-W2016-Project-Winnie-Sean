@@ -65,6 +65,7 @@ module scenes {
             bgm.stop();
             changeScene();
         }
+        
 
     }
 }

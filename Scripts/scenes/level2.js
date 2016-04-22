@@ -75,7 +75,7 @@ var scenes;
                 if (this._collision.check(this._batarangs[i])) {
                     this._batarangs[i].isHittingPlayer = true;
                     lives--;
-                    createjs.Sound.play("grunt");
+                    createjs.Sound.play("grunt", { volume: 0.75 });
                     console.log("you've been hit by a batarang...that's gonna leave a mark!");
                 }
                 else {
@@ -128,7 +128,7 @@ var scenes;
             // this._plasma.update();
             if (lives <= 0) {
                 console.log("player ran out of lives");
-                scene = config.Scene.END;
+                scene = config.Scene.GAMEOVER;
                 changeScene();
             }
             else if (score >= 10) {

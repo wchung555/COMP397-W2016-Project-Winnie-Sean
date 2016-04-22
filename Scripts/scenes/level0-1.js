@@ -15,8 +15,10 @@ var scenes;
         // PUBLIC METHODS +++++++++++++++++++++
         // Start Method
         Level01.prototype.start = function () {
-            //Game Music            
-            bgm = createjs.Sound.play("backgroundMusic", { loop: -1 });
+            //Game Music 
+            bgm.stop();
+            bgm = createjs.Sound.play("backgroundMusic", { loop: -1, volume: 0.25 });
+            console.log("backgroundMusic Volume at " + bgm.getVolume());
             //Add background
             this._background = new createjs.Bitmap(assets.getResult("Pre1"));
             this.addChild(this._background);

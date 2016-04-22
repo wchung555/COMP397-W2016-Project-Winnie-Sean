@@ -23,6 +23,8 @@
 /// <reference path="../scenes/level2-3.ts" />
 /// <reference path="../scenes/level3.ts" />
 /// <reference path="../scenes/instructions.ts" />
-/// <reference path="../scenes/menu.ts" /> 
+/// <reference path="../scenes/menu.ts" />
+/// <reference path="../scenes/win.ts" />
+/// <reference path="../scenes/gameover.ts" /> 
 
 //# sourceMappingURL=_reference.js.map

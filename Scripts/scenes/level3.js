@@ -67,6 +67,7 @@ var scenes;
                 if (this._collision.check(this._batarangs[i])) {
                     this._batarangs[i].isHittingPlayer = true;
                     lives--;
+                    createjs.Sound.play("grunt", { volume: 0.75 });
                     console.log("you've been hit by a batarang...that's gonna leave a mark!");
                 }
                 else {
@@ -80,25 +81,30 @@ var scenes;
                 this._batarangs[i].isHittingBat = false;
                 this._batarangs[i].isHittingPlayer = false;
             }
+            //plasma blasts
+            this._plasma.update();
             //boss
             if (this._bossCollision.check(this._boss)) {
                 this._boss.projectileHit = true;
                 this._plasma.isColliding = true;
+                createjs.Sound.play("bossHit");
                 console.log("boss hit!");
             }
             this._boss.update();
-            //plasma blasts
-            this._plasma.update();
+            // //plasma blasts
+            // this._plasma.update();
             this._livesLabel.text = "Lives: " + lives;
             this._bossLivesLabel.text = "Boss HP: " + this._boss.checkHealth();
             if (lives <= 0) {
                 console.log("player ran out of lives");
-                scene = config.Scene.END;
+                scene = config.Scene.GAMEOVER;
                 bgm.stop();
                 changeScene();
             }
             else if (this._boss.checkHealth() <= 0) {
                 console.log("transfer to WIN scene");
+                scene = config.Scene.WIN;
+                changeScene();
             }
         };
         //EVENT HANDLERS ++++++++++++++++++++

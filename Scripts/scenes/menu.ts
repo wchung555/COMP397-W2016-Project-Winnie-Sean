@@ -24,7 +24,8 @@ module scenes {
         // Start Method
         public start(): void {
             //sound
-            bgm = createjs.Sound.play("idleSound", { loop: -1 });
+            bgm = createjs.Sound.play("idleSound", { loop: -1 });            
+            console.log("idleSound Volume at " + bgm.getVolume() );
             firstRun = false;
             
             //Add background
@@ -71,7 +72,7 @@ module scenes {
         // INSTRUCTIONS Button click event handler
         private _instructionsButtonClick(event: createjs.MouseEvent) {
             createjs.Sound.play("select");
-            // Switch to the PLAY Scene
+            // Switch to the INSTRUCTIONS Scene
             scene = config.Scene.INSTRUCTIONS;
             changeScene();
         }

@@ -24,10 +24,10 @@ var scenes;
             // Start Button event listener
             this._startButton.on("click", this._startButtonClick, this);
             // add the Exit button to the MENU scene
-            this._exitButton = new objects.Button("menuButton", 50, 220, false);
-            this.addChild(this._exitButton);
+            this._menuButton = new objects.Button("menuButton", 50, 220, false);
+            this.addChild(this._menuButton);
             // Exit Button event listener
-            this._exitButton.on("click", this._exitButtonClick, this);
+            this._menuButton.on("click", this._menuButtonClick, this);
             // add this scene to the global stage container
             stage.addChild(this);
         };
@@ -44,7 +44,7 @@ var scenes;
             changeScene();
         };
         // EXIT Button click event handler
-        Instructions.prototype._exitButtonClick = function (event) {
+        Instructions.prototype._menuButtonClick = function (event) {
             createjs.Sound.play("select");
             // Switch to the MENU Scene
             scene = config.Scene.MENU;

@@ -20,6 +20,8 @@ var level2;
 var level23;
 var level3;
 var end;
+var win;
+var gameover;
 var assetData = [
     // Add your Assets here
     { id: "component", src: "../../Assets/images/Component30x30.png" },
@@ -40,6 +42,7 @@ var assetData = [
     { id: "quitButton", src: "../../Assets/images/quitButton.png" },
     { id: "quitButton_small", src: "../../Assets/images/quitButton_small.png" },
     { id: "menuButton", src: "../../Assets/images/menuButton.png" },
+    { id: "nextButton", src: "../../Assets/images/nextButton.png" },
     //Sounds-------------------------------------------------
     { id: "backgroundMusic", src: "../../Assets/audio/NormalLevel_Alt.mp3" },
     { id: "idleSound", src: "../../Assets/audio/idleScreen.ogg" },
@@ -49,12 +52,16 @@ var assetData = [
     { id: "select", src: "../../Assets/audio/Blip_Select12.wav" },
     { id: "plasma", src: "../../Assets/audio/PlasmaFire.wav" },
     { id: "powerup", src: "../../Assets/audio/Powerup10.wav" },
+    { id: "bossHit", src: "../../Assets/audio/shipDamage.ogg" },
+    { id: "victoryLoop", src: "../../Assets/audio/victoryShout.wav" },
     //Intermediate screens-----------------------------------
     { id: "InstructionsBackground", src: "../../Assets/images/InstructionScreen-fitted.png" },
     { id: "Pre1", src: "../../Assets/images/Level0-1.png" },
     { id: "Pre2", src: "../../Assets/images/Level1-2.png" },
     { id: "Pre3", src: "../../Assets/images/Level2-3.png" },
-    { id: "gameOver", src: "../../Assets/images/GameOver.png" },
+    { id: "gameOver", src: "../../Assets/images/GameOver2.png" },
+    { id: "winScreen", src: "../../Assets/images/LevelWin.png" },
+    { id: "endScreen", src: "../../Assets/images/thankYou.png" },
     { id: "Title", src: "../../Assets/images/Title.png" }
 ];
 function preload() {
@@ -80,7 +87,7 @@ function init() {
     scene = config.Scene.MENU;
     changeScene();
     // play background music (infinite loop)    
-    bgm = createjs.Sound.play("idleSound", { loop: -1 });
+    //bgm = createjs.Sound.play("idleSound", { loop: -1 });
     //register initialization
     firstRun = true;
 }
@@ -170,6 +177,20 @@ function changeScene() {
             end = new scenes.End();
             currentScene = end;
             console.log("Starting END Scene");
+            break;
+        case config.Scene.WIN:
+            // show the WIN scene
+            stage.removeAllChildren();
+            win = new scenes.Win();
+            currentScene = win;
+            console.log("Starting WIN Scene");
+            break;
+        case config.Scene.GAMEOVER:
+            // show the GAME OVER scene
+            stage.removeAllChildren();
+            gameover = new scenes.GameOver();
+            currentScene = gameover;
+            console.log("Starting GameOver Scene");
             break;
     }
     console.log(currentScene.numChildren);
