@@ -19,7 +19,6 @@
 
 /// <reference path="../managers/collision.ts" />
 /// <reference path="../managers/enemycollision.ts" />
-/// <reference path="../managers/plasmaCollision.ts" />
 
 /// <reference path="../scenes/end.ts" />
 /// <reference path="../scenes/level0-1.ts" />
