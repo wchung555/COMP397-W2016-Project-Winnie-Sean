@@ -87,7 +87,7 @@ var scenes;
                 scene = config.Scene.GAMEOVER; //testing
                 changeScene();
             }
-            else if (score >= 1000) {
+            else if ((score >= 1000 && !isDemo) || (score >= 200 && isDemo)) {
                 console.log("transfer to level 2");
                 scene = config.Scene.LEVEL12;
                 changeScene();
@@ -102,8 +102,7 @@ var scenes;
             changeScene();
         };
         return Level1;
-    }(objects.Scene));
+    })(objects.Scene);
     scenes.Level1 = Level1;
 })(scenes || (scenes = {}));
-
 //# sourceMappingURL=level1.js.map

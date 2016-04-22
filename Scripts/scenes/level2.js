@@ -51,9 +51,9 @@ var scenes;
             this._plasma = new objects.Projectile(.5);
             this.addChild(this._plasma);
             // add labels to scene
-            this._scoreLabel = new objects.Label("Score: " + score + " m", "35px Consolas", "#FFFFFF", 120, 0, false);
+            this._scoreLabel = new objects.Label("Score: " + score + " m", "35px Play", "#FFFFFF", 120, 0, false);
             this.addChild(this._scoreLabel);
-            this._livesLabel = new objects.Label("Lives: " + lives, "35px Consolas", "#FFFFFF", config.Screen.WIDTH - 200, 0, false);
+            this._livesLabel = new objects.Label("Lives: " + lives, "35px Play", "#FFFFFF", config.Screen.WIDTH - 200, 0, false);
             this.addChild(this._livesLabel);
             // add collision manager to the scene
             this._collision = new managers.Collision(this._player);
@@ -89,32 +89,24 @@ var scenes;
                 this._batarangs[i].isHittingBat = false;
                 this._batarangs[i].isHittingPlayer = false;
             } //for batarangs
-            //plasma blasts
-            this._plasma.update();
             //spikes           
             for (var i = 0; i < this._spikeCount; i++) {
                 if (this._collision.check(this._spikes[i])) {
-                    this._spikes[i].isHittingPlayer = true;
                     this._spikes[i].isColliding = true;
                     lives--;
                     createjs.Sound.play("grunt");
                     this._livesLabel.text = "Lives: " + lives;
                     console.log("ouch! you've been spiked!");
                 }
-                else {
-                    if (this._spikeCollision[i].check(this._plasma)) {
-                        this._spikes[i].isColliding = true;
-                        this._plasma.isColliding = true;
-                        console.log('spike meets plasma');
-                    }
-                } //else
+                else if (this._spikeCollision[i].check(this._plasma)) {
+                    this._spikes[i].isColliding = true;
+                    this._plasma.isColliding = true;
+                    console.log('spike meets plasma');
+                }
                 this._spikes[i].update();
-                this._spikes[i].isColliding = false;
-                this._plasma.isColliding = false;
-                this._spikes[i].isHittingBat = false;
-                this._spikes[i].isHittingPlayer = false;
                 this._spikes[i].projectileHit = false;
             } //for spikes
+            this._plasma.update();
             //component
             if (this._collision.check(this._component)) {
                 this._component.isCollision = true;
@@ -124,14 +116,12 @@ var scenes;
             this._component.update();
             this._scoreLabel.text = "Components: " + score;
             this._livesLabel.text = "Lives: " + lives;
-            // //plasma blasts
-            // this._plasma.update();
             if (lives <= 0) {
                 console.log("player ran out of lives");
                 scene = config.Scene.GAMEOVER;
                 changeScene();
             }
-            else if (score >= 10) {
+            else if ((score >= 10 && !isDemo) || (score >= 2 && isDemo)) {
                 console.log("transfer to level 3");
                 scene = config.Scene.LEVEL23;
                 changeScene();
@@ -154,8 +144,7 @@ var scenes;
             changeScene();
         }; //_exitButtonClick
         return Level2;
-    }(objects.Scene));
+    })(objects.Scene);
     scenes.Level2 = Level2;
 })(scenes || (scenes = {}));
-
 //# sourceMappingURL=level2.js.map

@@ -74,14 +74,14 @@ module scenes {
 
             // add labels to scene
             this._bossLivesLabel = new objects.Label("Boss HP: " + this._boss.checkHealth(),
-                "35px Consolas",
+                "35px Play",
                 "#FFFFFF",
                 50,
                 50,
                 false);
             this.addChild(this._bossLivesLabel);
             this._livesLabel = new objects.Label("Lives: " + lives,
-                "35px Consolas",
+                "35px Play",
                 "#FFFFFF",
                 config.Screen.WIDTH - 200,
                 50,

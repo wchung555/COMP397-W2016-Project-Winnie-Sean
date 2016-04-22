@@ -5,6 +5,7 @@ var assets: createjs.LoadQueue;
 var canvas: HTMLElement;
 var stage: createjs.Stage;
 var stats: Stats;
+var isDemo: boolean = true; 
 
 var currentScene: objects.Scene;
 var scene: number;
@@ -26,10 +27,7 @@ var level23: scenes.Level23;
 var level3: scenes.Level3;
 var end: scenes.End;
 var win: scenes.Win;
-var gameover: scenes.GameOver
-
-
-
+var gameover: scenes.GameOver;
 
 var assetData: objects.Asset[] = [
     // Add your Assets here

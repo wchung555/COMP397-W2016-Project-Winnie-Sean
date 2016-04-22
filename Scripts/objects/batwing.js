@@ -42,8 +42,7 @@ var objects;
             }
         };
         return Batwing;
-    }(objects.GameObject));
+    })(objects.GameObject);
     objects.Batwing = Batwing;
 })(objects || (objects = {}));
-
 //# sourceMappingURL=batwing.js.map

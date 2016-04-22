@@ -16,7 +16,7 @@ module scenes {
         private _spikeCount: number;
 
         private _plasma: objects.Projectile;
-        
+
         private _component: objects.Component;
 
         //player- - - - - - - - - - - - - - - - - -
@@ -65,7 +65,7 @@ module scenes {
             // add world to the scene
             this._background1 = new objects.World("L2_Platform");
             this.addChild(this._background1);
-            
+
             // add player to the scene
             this._player = new objects.Player();
             this.addChild(this._player);
@@ -82,23 +82,23 @@ module scenes {
                 this.addChild(this._spikes[i]);
                 this._spikeCollision[i] = new managers.EnemyCollision(this._spikes[i]);
             }
-            
+
             this._component = new objects.Component();
             this.addChild(this._component);
 
             this._plasma = new objects.Projectile(.5);
             this.addChild(this._plasma);
 
-             // add labels to scene
+            // add labels to scene
             this._scoreLabel = new objects.Label("Score: " + score + " m",
-                "35px Consolas",
+                "35px Play",
                 "#FFFFFF",
                 120,
                 0,
                 false);
             this.addChild(this._scoreLabel);
             this._livesLabel = new objects.Label("Lives: " + lives,
-                "35px Consolas",
+                "35px Play",
                 "#FFFFFF",
                 config.Screen.WIDTH - 200,
                 0,
@@ -107,17 +107,17 @@ module scenes {
 
             // add collision manager to the scene
             this._collision = new managers.Collision(this._player);
-            
-            
+
+
             // add the Exit button to the scene
             this._exitButton = new objects.Button(
                 "quitButton_small", 5, 5, false);
-            
+
             this.addChild(this._exitButton);
 
             // Exit Button event listener
             this._exitButton.on("click", this._exitButtonClick, this);
-            
+
 
             // add this scene to the global stage container
             stage.addChild(this);
@@ -134,7 +134,7 @@ module scenes {
                 if (this._collision.check(this._batarangs[i])) { //colliding with player avatar
                     this._batarangs[i].isHittingPlayer = true;
                     lives--;
-                    createjs.Sound.play("grunt", {volume: 0.75});
+                    createjs.Sound.play("grunt", { volume: 0.75 });
                     console.log("you've been hit by a batarang...that's gonna leave a mark!");
                 } else {
                     for (var j = 0; j < this._batarangCount; j++) {
@@ -147,35 +147,26 @@ module scenes {
                 this._batarangs[i].isHittingBat = false;
                 this._batarangs[i].isHittingPlayer = false;
             }//for batarangs
-            
-            
-            //plasma blasts
-            this._plasma.update();
-            
+
             //spikes           
             for (var i = 0; i < this._spikeCount; i++) { //check all
                 if (this._collision.check(this._spikes[i])) { //colliding with player avatar
-                    this._spikes[i].isHittingPlayer = true;
                     this._spikes[i].isColliding = true;
                     lives--;
                     createjs.Sound.play("grunt");
                     this._livesLabel.text = "Lives: " + lives;
                     console.log("ouch! you've been spiked!");
-                } else {
-                    if (this._spikeCollision[i].check(this._plasma)) {
-                        this._spikes[i].isColliding = true;
-                        this._plasma.isColliding = true;
-                        console.log('spike meets plasma');
-                    }
-                }//else
+                } else if (this._spikeCollision[i].check(this._plasma)) {
+                    this._spikes[i].isColliding = true;
+                    this._plasma.isColliding = true;
+                    console.log('spike meets plasma');
+                }
                 this._spikes[i].update();
-                this._spikes[i].isColliding = false;
-                this._plasma.isColliding = false;
-                this._spikes[i].isHittingBat = false;
-                this._spikes[i].isHittingPlayer = false;
                 this._spikes[i].projectileHit = false;
             }//for spikes
-            
+
+            this._plasma.update();
+
             //component
             if (this._collision.check(this._component)) {
                 this._component.isCollision = true;
@@ -183,18 +174,15 @@ module scenes {
                 createjs.Sound.play("powerup");
             }
             this._component.update();
-            
+
             this._scoreLabel.text = "Components: " + score;
             this._livesLabel.text = "Lives: " + lives;
-
-            // //plasma blasts
-            // this._plasma.update();
 
             if (lives <= 0) {
                 console.log("player ran out of lives");
                 scene = config.Scene.GAMEOVER;
                 changeScene();
-            } else if (score >= 10) {
+            } else if ((score >= 10 && !isDemo) || (score >= 2 && isDemo)) {
                 console.log("transfer to level 3");
                 scene = config.Scene.LEVEL23;
                 changeScene();
@@ -211,7 +199,7 @@ module scenes {
                 createjs.Sound.play("plasma");
             }
         }//_mouseClick
-        
+
         // EXIT Button click event handler
         private _exitButtonClick(event: createjs.MouseEvent) {
             createjs.Sound.play("select");

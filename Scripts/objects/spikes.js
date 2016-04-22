@@ -18,7 +18,6 @@ var objects;
             this.y = objects.World.floor - this.height + 3;
             this._speed.x = 5;
             this._rightBounds = config.Screen.WIDTH;
-            this.isHittingPlayer = false;
         }
         // PRIVATE METHODS +++++++++++++++++++++++++++++
         // check to see if the left of the enemy is outside the viewport
@@ -53,6 +52,7 @@ var objects;
         Spikes.prototype.update = function () {
             if (this.isColliding) {
                 this._reset();
+                this.isColliding = false;
             }
             else {
                 this._checkBounds(this._leftBounds);
@@ -63,8 +63,7 @@ var objects;
         Spikes.resetLock1 = false;
         Spikes.resetLock2 = false;
         return Spikes;
-    }(objects.GameObject));
+    })(objects.GameObject);
     objects.Spikes = Spikes; //class
 })(objects || (objects = {})); //module
-
 //# sourceMappingURL=spikes.js.map

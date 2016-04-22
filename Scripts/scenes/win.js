@@ -43,8 +43,7 @@ var scenes;
             changeScene();
         };
         return Win;
-    }(objects.Scene));
+    })(objects.Scene);
     scenes.Win = Win;
 })(scenes || (scenes = {}));
-
 //# sourceMappingURL=win.js.map

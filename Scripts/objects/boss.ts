@@ -16,8 +16,8 @@ module objects {
         constructor() {
             super("Batwing");
 
-            this._health = 100;
-
+            if (isDemo) { this._health = 20; }
+            else { this._health = 100; }
 
             this._reset();
             this.name = "Batwing";

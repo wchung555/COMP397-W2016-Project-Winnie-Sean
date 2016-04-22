@@ -44,9 +44,9 @@ var scenes;
             this.addChild(this._boss);
             this._bossCollision = new managers.EnemyCollision(this._plasma);
             // add labels to scene
-            this._bossLivesLabel = new objects.Label("Boss HP: " + this._boss.checkHealth(), "35px Consolas", "#FFFFFF", 50, 50, false);
+            this._bossLivesLabel = new objects.Label("Boss HP: " + this._boss.checkHealth(), "35px Play", "#FFFFFF", 50, 50, false);
             this.addChild(this._bossLivesLabel);
-            this._livesLabel = new objects.Label("Lives: " + lives, "35px Consolas", "#FFFFFF", config.Screen.WIDTH - 200, 50, false);
+            this._livesLabel = new objects.Label("Lives: " + lives, "35px Play", "#FFFFFF", config.Screen.WIDTH - 200, 50, false);
             this.addChild(this._livesLabel);
             // add collision manager to the scene
             this._collision = new managers.Collision(this._player);
@@ -124,8 +124,7 @@ var scenes;
             changeScene();
         }; //_exitButtonClick
         return Level3;
-    }(objects.Scene));
+    })(objects.Scene);
     scenes.Level3 = Level3;
 })(scenes || (scenes = {}));
-
 //# sourceMappingURL=level3.js.map

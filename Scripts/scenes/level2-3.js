@@ -51,8 +51,7 @@ var scenes;
             changeScene();
         };
         return Level23;
-    }(objects.Scene));
+    })(objects.Scene);
     scenes.Level23 = Level23;
 })(scenes || (scenes = {}));
-
 //# sourceMappingURL=level2-3.js.map

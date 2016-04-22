@@ -39,8 +39,7 @@ var objects;
             this.y += this._speed.y;
         }; //update()
         return Component;
-    }(objects.GameObject));
+    })(objects.GameObject);
     objects.Component = Component; //class
 })(objects || (objects = {})); //module
-
 //# sourceMappingURL=component.js.map

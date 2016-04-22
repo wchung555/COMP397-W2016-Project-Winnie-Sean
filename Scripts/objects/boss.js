@@ -11,7 +11,12 @@ var objects;
         // CONSTRUCTOR METHOD +++++++++++++++++++++++++
         function Boss() {
             _super.call(this, "Batwing");
-            this._health = 100;
+            if (isDemo) {
+                this._health = 20;
+            }
+            else {
+                this._health = 100;
+            }
             this._reset();
             this.name = "Batwing";
             this.y = 40;
@@ -50,8 +55,7 @@ var objects;
         Boss.resetLock1 = false;
         Boss.resetLock2 = false;
         return Boss;
-    }(objects.GameObject));
+    })(objects.GameObject);
     objects.Boss = Boss; //class
 })(objects || (objects = {})); //module
-
 //# sourceMappingURL=boss.js.map
