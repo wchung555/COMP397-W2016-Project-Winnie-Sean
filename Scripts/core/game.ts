@@ -5,7 +5,7 @@ var assets: createjs.LoadQueue;
 var canvas: HTMLElement;
 var stage: createjs.Stage;
 var stats: Stats;
-var isDemo: boolean = true; 
+var isDemo: boolean = false; 
 
 var currentScene: objects.Scene;
 var scene: number;

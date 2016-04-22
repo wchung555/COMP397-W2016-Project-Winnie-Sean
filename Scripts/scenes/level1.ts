@@ -125,7 +125,7 @@ module scenes {
                 console.log("player ran out of lives");
                 scene = config.Scene.GAMEOVER; //testing
                 changeScene();
-            } else if ((score >= 1000 && !isDemo) || (score >= 200 && isDemo)) {
+            } else if ((score >= 1000 && !isDemo) || (score >= 500 && isDemo)) {
                 console.log("transfer to level 2");
                  scene = config.Scene.LEVEL12;
                  changeScene();
