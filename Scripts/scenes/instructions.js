@@ -24,7 +24,7 @@ var scenes;
             // Start Button event listener
             this._startButton.on("click", this._startButtonClick, this);
             // add the Exit button to the MENU scene
-            this._exitButton = new objects.Button("quitButton", 55, 220, false);
+            this._exitButton = new objects.Button("menuButton", 50, 220, false);
             this.addChild(this._exitButton);
             // Exit Button event listener
             this._exitButton.on("click", this._exitButtonClick, this);
@@ -40,13 +40,14 @@ var scenes;
             createjs.Sound.play("select");
             // Switch to the PLAY Scene
             scene = config.Scene.LEVEL01;
+            bgm.stop();
             changeScene();
         };
         // EXIT Button click event handler
         Instructions.prototype._exitButtonClick = function (event) {
             createjs.Sound.play("select");
-            // Switch to the END Scene
-            scene = config.Scene.END;
+            // Switch to the MENU Scene
+            scene = config.Scene.MENU;
             changeScene();
         };
         return Instructions;

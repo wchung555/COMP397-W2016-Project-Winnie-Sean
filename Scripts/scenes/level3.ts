@@ -22,6 +22,7 @@ module scenes {
         private _bossCollision: managers.EnemyCollision;
         private _bossLivesLabel: objects.Label;
         private _livesLabel: objects.Label;
+        private _exitButton: objects.Button;
 
         // CONSTRUCTOR ++++++++++++++++++++++
         constructor() {
@@ -89,6 +90,17 @@ module scenes {
 
             // add collision manager to the scene
             this._collision = new managers.Collision(this._player);
+            
+            
+            // add the Exit button to the scene
+            this._exitButton = new objects.Button(
+                "quitButton_small", 5, 5, false);
+            
+            this.addChild(this._exitButton);
+
+            // Exit Button event listener
+            this._exitButton.on("click", this._exitButtonClick, this);
+            
 
             // add this scene to the global stage container
             stage.addChild(this);
@@ -152,6 +164,15 @@ module scenes {
                 fired = true;
                 createjs.Sound.play("plasma");
             }
-        }
+        }//_mouseClick
+        
+        // EXIT Button click event handler
+        private _exitButtonClick(event: createjs.MouseEvent) {
+            createjs.Sound.play("select");
+            // Switch to the END Scene
+            scene = config.Scene.END;
+            changeScene();
+        }//_exitButtonClick
+        
     }
 }

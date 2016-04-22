@@ -1,1 +1,12 @@
-Configured Level 1-2 page
+Configured Intermediate levels and added Quit button to each main level.
+-Configured Level 1-2 page
+-fixed bug with plasma shots 
+-configured level 2-3
+- add assets for 2 new screens
+- Add quit button to Levels 2 & 3 scenes
+- Moved scoring labels to top of screen.
+*Strange bug encountered while configuring: 
+  -Setting Menu._playButton to navigate to LEVEL23 yields "undefined".
+  -Error logs as 
+  --game.ts:207 Uncaught TypeError: Cannot read property 'numChildren' of undefined
+  --game.ts:118 Uncaught TypeError: Cannot read property 'update' of undefined

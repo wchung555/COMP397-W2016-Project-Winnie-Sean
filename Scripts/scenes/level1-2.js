@@ -3,7 +3,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-// INSTRUCTIONS SCENE
+// Level 1.5 SCENE
 var scenes;
 (function (scenes) {
     var Level12 = (function (_super) {
@@ -15,8 +15,6 @@ var scenes;
         // PUBLIC METHODS +++++++++++++++++++++
         // Start Method
         Level12.prototype.start = function () {
-            //Game Music            
-            bgm = createjs.Sound.play("backgroundMusic", { loop: -1 });
             //Add background
             this._background = new createjs.Bitmap(assets.getResult("Pre2"));
             this.addChild(this._background);

@@ -22,7 +22,7 @@ var config;
         function Screen() {
         }
         Screen.WIDTH = 640;
-        Screen.HEIGHT = 480;
+        Screen.HEIGHT = 420;
         Screen.CENTER_X = 320;
         Screen.CENTER_Y = 210;
         return Screen;

@@ -1,4 +1,4 @@
-// INSTRUCTIONS SCENE
+// Level 1.5 SCENE
 module scenes {
     export class Level12 extends objects.Scene {
         //PRIVATE INSTANCE VARIABLES ++++++++++++
@@ -16,9 +16,7 @@ module scenes {
         // Start Method
         public start(): void {
             
-            //Game Music            
-            bgm = createjs.Sound.play("backgroundMusic", { loop: -1 });
-            
+                        
             //Add background
             this._background = new createjs.Bitmap(assets.getResult("Pre2"));
             this.addChild(this._background);            

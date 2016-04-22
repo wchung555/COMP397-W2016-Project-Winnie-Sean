@@ -47,7 +47,7 @@ var scenes;
             this.addChild(this._livesLabel);
             // add collision manager to the scene
             this._collision = new managers.Collision(this._player);
-            // add the Exit button to the MENU scene
+            // add the Exit button to the scene
             this._exitButton = new objects.Button("quitButton_small", 5, 5, false);
             this.addChild(this._exitButton);
             // Exit Button event listener

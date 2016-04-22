@@ -88,24 +88,35 @@ module scenes {
             this._plasma = new objects.Projectile(.5);
             this.addChild(this._plasma);
 
-            // add labels to scene
-            this._scoreLabel = new objects.Label("Components: " + score,
+             // add labels to scene
+            this._scoreLabel = new objects.Label("Score: " + score + " m",
                 "35px Consolas",
                 "#FFFFFF",
-                50,
-                50,
+                120,
+                0,
                 false);
             this.addChild(this._scoreLabel);
             this._livesLabel = new objects.Label("Lives: " + lives,
                 "35px Consolas",
                 "#FFFFFF",
                 config.Screen.WIDTH - 200,
-                50,
+                0,
                 false);
             this.addChild(this._livesLabel);
 
             // add collision manager to the scene
             this._collision = new managers.Collision(this._player);
+            
+            
+            // add the Exit button to the scene
+            this._exitButton = new objects.Button(
+                "quitButton_small", 5, 5, false);
+            
+            this.addChild(this._exitButton);
+
+            // Exit Button event listener
+            this._exitButton.on("click", this._exitButtonClick, this);
+            
 
             // add this scene to the global stage container
             stage.addChild(this);
@@ -135,6 +146,10 @@ module scenes {
                 this._batarangs[i].isHittingBat = false;
                 this._batarangs[i].isHittingPlayer = false;
             }//for batarangs
+            
+            
+            //plasma blasts
+            this._plasma.update();
             
             //spikes           
             for (var i = 0; i < this._spikeCount; i++) { //check all
@@ -171,8 +186,8 @@ module scenes {
             this._scoreLabel.text = "Components: " + score;
             this._livesLabel.text = "Lives: " + lives;
 
-            //plasma blasts
-            this._plasma.update();
+            // //plasma blasts
+            // this._plasma.update();
 
             if (lives <= 0) {
                 console.log("player ran out of lives");
@@ -194,6 +209,14 @@ module scenes {
                 fired = true;
                 createjs.Sound.play("plasma");
             }
-        }
+        }//_mouseClick
+        
+        // EXIT Button click event handler
+        private _exitButtonClick(event: createjs.MouseEvent) {
+            createjs.Sound.play("select");
+            // Switch to the END Scene
+            scene = config.Scene.END;
+            changeScene();
+        }//_exitButtonClick
     }
 }

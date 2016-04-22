@@ -15,37 +15,39 @@ var scenes;
         // PUBLIC METHODS +++++++++++++++++++++
         // Start Method
         Level23.prototype.start = function () {
-            bgm.stop();
-            bgm = createjs.Sound.play("bossMusic", { loop: -1 });
-            // add world to the scene
-            this._background1 = new objects.World("Gotham");
-            this.addChild(this._background1);
-            // add player to the scene
-            this._player = new objects.Player();
-            this.addChild(this._player);
-            // add label, start button to scene
-            this._sceneLabel = new objects.Label("Level 3", "60px Consolas", "#FFFFFF", config.Screen.CENTER_X, config.Screen.CENTER_Y, false);
-            this._sceneLabel.regX = this._sceneLabel.getBounds().width * 0.5;
-            this._sceneLabel.regY = this._sceneLabel.getBounds().height * 0.5;
-            this.addChild(this._sceneLabel);
-            this._startButton = new objects.Button("playButton", config.Screen.CENTER_X, config.Screen.CENTER_Y + 100, false);
-            this._startButton.regX = this._startButton.width * .5;
-            this._startButton.regY = this._startButton.height * .5;
+            //Add background
+            this._background = new createjs.Bitmap(assets.getResult("Pre3"));
+            this.addChild(this._background);
+            // add the Start button to the INSTRUCTIONS scene
+            this._startButton = new objects.Button("playButton", 512, 220, false);
             this.addChild(this._startButton);
+            // Start Button event listener
             this._startButton.on("click", this._startButtonClick, this);
+            // add the Exit button to the MENU scene
+            this._exitButton = new objects.Button("quitButton", 55, 220, false);
+            this.addChild(this._exitButton);
+            // Exit Button event listener
+            this._exitButton.on("click", this._exitButtonClick, this);
             // add this scene to the global stage container
             stage.addChild(this);
         };
-        // PLAY Scene updates here
+        // INTRO Scene updates here
         Level23.prototype.update = function () {
-            this._background1.update();
         };
         //EVENT HANDLERS ++++++++++++++++++++
         // START Button click event handler
         Level23.prototype._startButtonClick = function (event) {
             createjs.Sound.play("select");
-            // Switch to the LEVEL3 Scene
+            // Switch to the PLAY Scene
             scene = config.Scene.LEVEL3;
+            changeScene();
+        };
+        // EXIT Button click event handler
+        Level23.prototype._exitButtonClick = function (event) {
+            createjs.Sound.play("select");
+            // Switch to the END Scene
+            scene = config.Scene.END;
+            bgm.stop();
             changeScene();
         };
         return Level23;

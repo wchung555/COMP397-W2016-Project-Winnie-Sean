@@ -50,6 +50,11 @@ var scenes;
             this.addChild(this._livesLabel);
             // add collision manager to the scene
             this._collision = new managers.Collision(this._player);
+            // add the Exit button to the scene
+            this._exitButton = new objects.Button("quitButton_small", 5, 5, false);
+            this.addChild(this._exitButton);
+            // Exit Button event listener
+            this._exitButton.on("click", this._exitButtonClick, this);
             // add this scene to the global stage container
             stage.addChild(this);
         };
@@ -104,7 +109,14 @@ var scenes;
                 fired = true;
                 createjs.Sound.play("plasma");
             }
-        };
+        }; //_mouseClick
+        // EXIT Button click event handler
+        Level3.prototype._exitButtonClick = function (event) {
+            createjs.Sound.play("select");
+            // Switch to the END Scene
+            scene = config.Scene.END;
+            changeScene();
+        }; //_exitButtonClick
         return Level3;
     }(objects.Scene));
     scenes.Level3 = Level3;

@@ -29,7 +29,7 @@ module scenes {
             
              // add the Exit button to the MENU scene
             this._exitButton = new objects.Button(
-                "quitButton", 55, 220, false);
+                "menuButton", 50, 220, false);
             this.addChild(this._exitButton);
 
             // Exit Button event listener
@@ -52,14 +52,15 @@ module scenes {
             createjs.Sound.play("select");
             // Switch to the PLAY Scene
             scene = config.Scene.LEVEL01;
+            bgm.stop();
             changeScene();
         }
         
          // EXIT Button click event handler
         private _exitButtonClick(event: createjs.MouseEvent) {
             createjs.Sound.play("select");
-            // Switch to the END Scene
-            scene = config.Scene.END;
+            // Switch to the MENU Scene
+            scene = config.Scene.MENU;
             changeScene();
         }
 

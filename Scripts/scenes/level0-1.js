@@ -3,7 +3,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-// INSTRUCTIONS SCENE
+// Level 0.5 SCENE
 var scenes;
 (function (scenes) {
     var Level01 = (function (_super) {

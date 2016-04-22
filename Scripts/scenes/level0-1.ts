@@ -1,4 +1,4 @@
-// INSTRUCTIONS SCENE
+// Level 0.5 SCENE
 module scenes {
     export class Level01 extends objects.Scene {
         //PRIVATE INSTANCE VARIABLES ++++++++++++
