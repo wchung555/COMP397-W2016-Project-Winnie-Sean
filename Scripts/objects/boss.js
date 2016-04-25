@@ -55,7 +55,8 @@ var objects;
         Boss.resetLock1 = false;
         Boss.resetLock2 = false;
         return Boss;
-    })(objects.GameObject);
+    }(objects.GameObject));
     objects.Boss = Boss; //class
 })(objects || (objects = {})); //module
+
 //# sourceMappingURL=boss.js.map

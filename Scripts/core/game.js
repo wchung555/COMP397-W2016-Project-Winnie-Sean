@@ -4,7 +4,7 @@ var assets;
 var canvas;
 var stage;
 var stats;
-var isDemo = true;
+var isDemo = false;
 var currentScene;
 var scene;
 var score;
@@ -197,4 +197,5 @@ function changeScene() {
     console.log(currentScene.numChildren);
 }
 window.onload = preload;
+
 //# sourceMappingURL=game.js.map

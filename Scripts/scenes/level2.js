@@ -144,7 +144,8 @@ var scenes;
             changeScene();
         }; //_exitButtonClick
         return Level2;
-    })(objects.Scene);
+    }(objects.Scene));
     scenes.Level2 = Level2;
 })(scenes || (scenes = {}));
+
 //# sourceMappingURL=level2.js.map
